@@ -1,0 +1,9 @@
+Data_in es el json que se pide para pronosticar los siguientes 12 meses. Tiene que traer incluido los proximos 12 meses y esto se deja claro en la columna de "pronostico" de los datos. Es decir se entregan todos los datos historicos y futuros. las columnas más importantes son "venta_kg", "venta_dinero", "pronostico", "mes", "ano". Las demas columnas son datos de variables explicativas, el nombre de las columnas se da en "col_names". Ademas se tiene que entregar la informacion de la desagregacion en marca, canal, categoria y region. Para especificar si se quiere usar el modelo 3.1 variables accionables  independedientes ( el usuarios modifica las variables accionables y se le entrega una prediccion) se coloca "variables_accionables_dependientes": false. En caso contrario se tiene que llenar los datos de "venta_kg" y "venta_dinero" para el futuro y poner "variables_accionables_dependientes": true para que el modelo use la parte 3.2 (optimizar y hallar las variables accionables) .
+
+ 
+
+Data out retorna los datos completados (llenando el pronostico de venta o las variables accionables ) . Se entrega tambien una variable booleana "posible" en caso de no encontrar modelo. Tambien se entregan las 5 variables notables más importantes en orden en variables notables.
+
+ 
+
+Por último train_model se entrega una desagregacion y se pide que se entrene un modelo. en este caso solo se retornaria error en caso de no poder entrenarlo.

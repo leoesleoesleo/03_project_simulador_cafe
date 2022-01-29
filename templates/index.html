@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'incluidos/head.html' %}
+
+<script type="text/javascript">
+  
+ function v_informativo() {   
+        $.ajax({
+            url: '/v_informativo',
+            type: "post",
+            beforeSend: show_loading(),
+            dataType: "html",
+            success: function(res){
+                $('div#contenido').html(res); 
+                hide_loading();                
+             }
+        });
+    }
+
+ function v_pronostico() {   
+        $.ajax({
+            url: '/v_pronostico',
+            type: "post",
+            beforeSend: show_loading(),
+            dataType: "html",
+            success: function(res){
+                $('div#contenido').html(res); 
+                hide_loading();                
+            }
+        });
+    }
+
+</script>
+
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <!--<h6 style="font-size:20px; color:#AEAEAE;">Proveedor <span class="fa fa-industry"></span></h6>-->
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <img id="loading" style="padding-left:50%;display:none;" class="img-fluid" src="static/dist/img/cargando.gif" width="150" height="10" alt="">
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <strong><h5 style="color:#195533;font-weight:bold !important;">bienvenido<span id="session"></span></h5></strong>
+      </li>
+    </ul>
+  </nav>
+  <!-- Main Sidebar Container -->
+
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#7FAE4D !important;">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      <center><span class="brand-text font-weight-light" style="color:#195533 !important;font-weight:bold !important;">SIMULADOR</span></center>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="rederpagina();" style="color:#195533 !important;">
+              <i class="nav-icon fas fa-share"></i>
+              <p>
+                Inicio
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="v_pronostico()" style="color:#195533 !important;">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Pronósticos
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" onclick="v_informativo()" style="color:#195533 !important;">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Informativo
+              </p>
+            </a>
+          </li>
+
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div id="contenido" class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <!--<h1 class="m-0 text-dark">Simulador Café </h1>-->
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <center><h1 style="font-weight: bold;">Simulador <span style="color: green;font-weight: bold;">Café<span></h1></center>
+      <br/>
+      <br/>
+    <center><img id="loading" src="static/dist/img/nutresa.png" width="500" height="200"></center>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2021 <samp style="color:#195533">Nutresa</samp></strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.0.0
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+
+
+</body>
+{% include 'incluidos/footer.html' %}
+</html>
+
+
+
+
