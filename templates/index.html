@@ -3,7 +3,95 @@
 {% include 'incluidos/head.html' %}
 
 <script type="text/javascript">
-  
+ 
+  function select_marca(){     
+    desagregacion = 'marca' 
+    $.ajax({
+          url: '/v_desagregacion',
+          data: {'desagregacion':desagregacion},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#select_marca').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+  function select_categoria(){     
+    desagregacion = 'categoria' 
+    $.ajax({
+          url: '/v_desagregacion',
+          data: {'desagregacion':desagregacion},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#select_categoria').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+  function select_region(){     
+    desagregacion = 'region' 
+    $.ajax({
+          url: '/v_desagregacion',
+          data: {'desagregacion':desagregacion},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#select_region').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+  function select_canal(){     
+    desagregacion = 'canal' 
+    $.ajax({
+          url: '/v_desagregacion',
+          data: {'desagregacion':desagregacion},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#select_canal').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
  function v_informativo() {   
         $.ajax({
             url: '/v_informativo',
@@ -29,6 +117,85 @@
             }
         });
     }
+
+    function v_optimizaion() {
+        $.ajax({
+            url: '/v_optimizacion',
+            type: "post",
+            beforeSend: show_loading(),
+            dataType: "html",
+            success: function(res){
+                $('div#contenido').html(res); 
+                hide_loading();                
+            }
+        });
+    }
+
+  function accionables() {  
+    var accionable = $('select#select_accionable').val();
+    $("select#select_accionable").removeAttr("style");
+
+    if (accionable == '' || accionable == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar un accionable", "error");
+      $("select#select_accionable").css({'border-color':'red'});
+      return;
+    }
+
+    alert("Proceso de consultar datos accionables")
+    }
+
+  function traer_data() {   
+    //Validar entradas    
+    var fuente = $('select#select_fuente').val(); 
+    var marca = $('select#select_marca').val(); 
+    var categoria = $('select#select_categoria').val(); 
+    var region = $('select#select_region').val(); 
+    var canal = $('select#select_canal').val(); 
+
+    $("select#select_fuente").removeAttr("style");
+    $("select#select_marca").removeAttr("style");
+    $("select#select_categoria").removeAttr("style");
+    $("select#select_region").removeAttr("style");
+    $("select#select_canal").removeAttr("style");    
+
+    if (fuente == '' || fuente == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una fuente", "error");
+      $("select#select_fuente").css({'border-color':'red'});
+      return;
+    }
+    if (marca == '' || marca == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una marca", "error");
+      $("select#select_marca").css({'border-color':'red'});
+      return;
+    }
+    if (categoria == '' || categoria == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una categoria", "error");
+      $("select#select_categoria").css({'border-color':'red'});
+      return;
+    }
+    if (region == '' || region == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una region", "error");
+      $("select#select_region").css({'border-color':'red'});
+      return;
+    }
+    if (canal == '' || canal == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar un canal", "error");
+      $("select#select_canal").css({'border-color':'red'});
+      return;
+    }
+    
+      $.ajax({
+          url: '/traer_data',
+          type: "post",
+          data: {'fuente':fuente,'marca':marca,'categoria':categoria,'region':region,'canal':canal},
+          beforeSend: show_loading(),
+          dataType: "html",
+          success: function(res){
+              $('div#contenido').html(res); 
+              hide_loading();                
+          }
+      });
+  }    
 
 </script>
 
@@ -92,6 +259,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="#" class="nav-link" onclick="v_optimizaion()" style="color:#195533 !important;">
+              <i class="nav-icon fas fa-star"></i>
+              <p>
+                Optimización
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#" class="nav-link" onclick="v_informativo()" style="color:#195533 !important;">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -132,6 +307,7 @@
       <br/>
       <br/>
     <center><img id="loading" src="static/dist/img/nutresa.png" width="500" height="200"></center>
+
 
   </div>
   <!-- /.content-wrapper -->

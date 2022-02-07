@@ -1,0 +1,31 @@
+2022-02-07 00:07:07 werkzeug     WARNING   * Debugger is active!
+2022-02-07 00:07:07 werkzeug     INFO      * Debugger PIN: 232-128-852
+2022-02-07 00:07:07 werkzeug     INFO      * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2022-02-07 00:07:09 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:09] "[37mGET / HTTP/1.1[0m" 200 -
+2022-02-07 00:07:09 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:09] "[33mGET /static/plugins/inputmask/jquery.inputmask.min.js HTTP/1.1[0m" 404 -
+2022-02-07 00:07:10 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:10] "[33mGET /static/plugins/inputmask/jquery.inputmask.min.js HTTP/1.1[0m" 404 -
+2022-02-07 00:07:10 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:10] "[33mGET /static/plugins/inputmask/jquery.inputmask.min.js HTTP/1.1[0m" 404 -
+2022-02-07 00:07:13 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:13] "[37mPOST /v_optimizacion HTTP/1.1[0m" 200 -
+2022-02-07 00:07:15 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:15] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
+2022-02-07 00:07:15 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:15] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:07:15 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:15] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:07:15 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:15] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:07:15 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:15] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:07:38 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:38] "[37mPOST /traer_data HTTP/1.1[0m" 200 -
+2022-02-07 00:07:38 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:38] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:07:38 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:38] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:07:38 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:38] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:07:38 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:38] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:07:57 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:07:57] "[37mPOST /v_optimizacion HTTP/1.1[0m" 200 -
+2022-02-07 00:08:06 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:08:06] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
+2022-02-07 00:08:06 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:08:06] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:08:06 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:08:06] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:08:06 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:08:06] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:08:06 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:08:06] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:09:03 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:09:03] "[37mPOST /v_optimizacion HTTP/1.1[0m" 200 -
+2022-02-07 00:09:05 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:09:05] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
+2022-02-07 00:09:05 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:09:05] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:09:06 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:09:06] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:09:06 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:09:06] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:09:06 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:09:06] "[37mPOST /v_desagregacion HTTP/1.1[0m" 200 -
+2022-02-07 00:09:10 werkzeug     INFO     127.0.0.1 - - [07/Feb/2022 00:09:10] "[37mPOST /v_optimizacion HTTP/1.1[0m" 200 -

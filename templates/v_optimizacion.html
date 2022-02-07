@@ -1,231 +1,32 @@
+
 <style type="text/css">
 
-  #scroll_horizontal {
-    width: 100%;
-    overflow: auto;
-    padding: 8px;
-  }
-
-</style>
-
-<script>
-
-$(document).ready(function() {
-      select_marca();
-      select_categoria();
-      select_region();
-      select_canal();          
-  });  
-
-function descargarArchivo() {  
-    //proceso de transformar JSON en DF
-    show_loading();
-    window.location.href = "/v_descargar"
-    hide_loading();
-    //$.notify("Descargado: " + tabla, "success"); 
-  }
-
-  function rollback() {   
-        $.ajax({
-            url: '/v_rollback',
-            type: "post",
-            beforeSend: show_loading(),
-            dataType: "text",
-            success: function(res){
-                if(res == 'resok'){
-                  $.notify("Rollback Aplicado", "success"); 
-                  hide_loading();
-                  v_pronostico();
-                }
-             },
-           error: function(e) {
-                console.error(e);
-                $.notify("Hubo un error en la petición del proceso", "error");
-                hide_loading();
-          } 
-        });
+    #scroll_horizontal {
+      width: 100%;
+      overflow: auto;
+      padding: 8px;
     }
-
-  function mostrarArchivo(){
-    var archivo=$('input#inputArchivoCarga').val();
-    $('input#inputArchivo').val(archivo);
-  }
-
-  function cargarArchivoSalida(){ 
-    var archivo=$('input#inputArchivo').val();        
-    var extensionArchivo= archivo.substring(archivo.lastIndexOf('.') + 1);   
-    //alert(archivo)
-
-    if (archivo==''){
-      $.notify("Debe seleccionar un archivo", "error");
-      $("input#inputArchivo").css({'border-color':'red'});
-      return;
-    }
-    if (extensionArchivo!='csv'){
-        $.notify("Seleccione un archivo formato: .csv", "error");
-        $("input#inputArchivo").css({'border-color':'red'});
-        return;
-    } 
-    $.ajaxFileUpload({
-        url: '/upload',
-        secureuri: false,
-        fileElementId:'inputArchivoCarga',
-        data: {'archivo':archivo},
-        type: "POST",        
-        dataType: 'text',        
-        beforeSend: show_loading(),
-        headers: {
-                    'Access-Control-Allow-Origin': '*'
-                },
-        //complete: function(objeto){dialogoEsperaOcultar();},
-        success: function(res) {                   
-          if (res == 'procesoOk') {
-                $.notify("Registros agregados", "success"); 
-                hide_loading();   
-                v_pronostico();                                                               
-            } 
-          if (res == 'sinprocesar') {
-                $.notify("Error al iniciar el proceso", "error");
-                hide_loading();   
-          }  
-          if (res == 'nodata') {
-                $.notify("Debe seleccionar un fichero", "error");
-                hide_loading();   
-            }
-          if (res == 'noextension') {
-                $.notify("Seleccione un archivo formato: .csv", "error");
-                hide_loading();   
-              }
-          if (res == 'noformato') {
-                $.notify("Las columnas del fichero no son iguales a la tabla de la base de datos" , "error");
-                hide_loading();   
-              }    
-          if (res == 'ErrorCsv') {
-                $.notify("Hubo un error al leer el CSV", "error");
-                hide_loading();   
-              } 
-          if (res == 'Error') {
-                $.notify("Hubo un error en el proceso", "error");
-                hide_loading();   
-          }                     
-        },
-        error: function(e) {
-           console.error(e);
-           $.notify("Hubo un error en la petición del proceso", "error");
-           hide_loading();
-          }
-    });
-
-  }
-
-
-  function pronostico(){
-    var conbinatoria=$('p#conbinatoria').text();  
-    if(conbinatoria == 'No Data'){
-      alert("Antes del pronostico debe seleccionar una conbinatoria de datos")
-    }  else{
-      alert("Proceso Pronostico con datos de la conbinatoria: "+ conbinatoria)
-    }    
-  }
-</script>
+  
+  </style>
 
 <!-- Content Header (Page header) -->
-  <div class="content-header">
+<div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 style="color: #195533;font-weight:bold !important;">Pronóstico <i class="nav-icon fas fa-tachometer-alt"></i></h1>
+          <h1 style="color: #195533;font-weight:bold !important;">Optimización <i class="nav-icon fas fa-star"></i></h1>
           <p id="conbinatoria">{{ combinatoria }}</p>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-            <li class="breadcrumb-item active">Pronóstico</li>
+            <li class="breadcrumb-item active">Optimización</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
 <!-- /.content-header -->
-
-<br> 
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-3 col-12">
-      <div class="small-box bg-info" style="background-color: #1aab61 !important">
-        <div class="inner">
-          <h4>Descargar Simulación</h4>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <a href="#" class="btn btn-default btn-block" onclick="descargarArchivo()">Exportar</a>
-        </div>
-        <div class="icon">
-          <i class="fa fa-download"></i>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-3 col-12">
-      <div class="small-box bg-success">
-        <div class="inner">
-          <h4>Subir</h4>
-            <div class="form-group"> 
-              <div class="input-group">
-                <label class="input-group-btn">
-                    <span class="btn btn-primary">
-                      Examinar… <input style="display: none;" multiple="" type="file" onchange="mostrarArchivo()" id="inputArchivoCarga" name="inputArchivoCarga">
-                    </span>                                        
-                    <input class="form-control" readonly="" type="text" size="50" id="inputArchivo"> 
-                </label>
-              </div>              
-                  <button type="button" class="btn btn-default btn-block" onclick="cargarArchivoSalida()">Subir Archivo</button>                                      
-            </div>
-        </div>
-        <div class="icon">
-          <i class="fa fa-upload"></i>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-3 col-12">
-      <div class="small-box bg-info" style="background-color: #1aab61 !important">
-        <div class="inner">
-          <h4>Rollback</h4>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <!--<a href="#" class="btn btn-default btn-block" onclick="rollback()">Rollback</a>-->
-          <button type="button" class="btn btn-default btn-block" onclick="rollback()">Rollback</button>
-        </div>
-        <div class="icon">
-          <i class="fa fa-retweet"></i>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-3 col-12">
-      <div class="small-box bg-info">
-        <div class="inner">
-          <h4>Pronostico</h4>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <!--<a href="#" class="btn btn-default btn-block" onclick="rollback()">Rollback</a>-->
-          <button type="button" class="btn btn-default btn-block" onclick="pronostico()">Pronosticar</button>
-        </div>
-        <div class="icon">
-          <i class="fa fa-tachometer-alt"></i>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <section class="content">
     <div class="container-fluid">
@@ -528,32 +329,18 @@ function descargarArchivo() {
               <form role="form">
                 <div class="box-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Fuente</label>
-                    <select id="select_fuente" class="form-control">
+                    <label for="exampleInputEmail1">Accionables</label>
+                    <select id="select_accionable" class="form-control">
                       <option>-- Seleccione --</option>
-                      <option>Nielsen</option>
-                      <option>Interna</option>           
+                      <option>Dependientes</option>
+                      <option>Independientes</option>           
                     </select>
                   </div>
-                  <div class="form-group">
-                    <label>Marca</label>
-                    <select id="select_marca" class="form-control">                
-                    </select>
-                    <label>Categoria</label>
-                    <select id="select_categoria" class="form-control">     
-                    </select>
-                    <label>Region</label>
-                    <select id="select_region" class="form-control">  
-                    </select>
-                    <label>Canal</label>
-                    <select id="select_canal" class="form-control">    
-                    </select>
-                  </div>                  
                 </div>
                 <!-- /.box-body -->
       
                 <div class="box-footer">
-                  <a href="#" class="btn btn-primary" onclick="traer_data()">Tarer datos</a>
+                  <a href="#" class="btn btn-primary" onclick="accionables()">Accionables</a>
                 </div>
               </form>
             </div>
@@ -587,107 +374,3 @@ function descargarArchivo() {
       });
   });
 </script>
-
-<script>
-  $(function () {
-
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
-
-  })
-</script>
-
-
-<!-- ChartJS -->
-<script src="{{ url_for('static', filename='plugins/chart.js/Chart.min.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ url_for('static', filename='dist/js/demo.js') }}"></script>
-<!-- page script -->
-
-<script>
-  $(document).ready(function() {
-      $('#example1').DataTable({
-      responsive: true,
-      ordering:  true
-      });
-    });
-</script>
-
-
-
-<script>
-
-  new Chart(document.getElementById("estimacion"), {
-  type: 'line',
-  data: {
-    labels: [{% for row in data['data'] %}
-             "{{row[28]}}",
-            {% endfor %}],
-    datasets: [{ 
-        data: [{% for row in data['data'] %}
-             "{{row[26]}}",
-            {% endfor %}],
-        label: "venta_dinero",
-        borderColor: "#3e95cd",
-        fill: false,
-        pointRadius: 2
-      },
-      { 
-        data: [{% for row in data['data'] %}
-             "{{row[25]}}",
-            {% endfor %}],
-        label: "venta_kg",
-        borderColor: "#FF4E4E",
-        fill: false,
-        pointRadius: 2
-      }
-
-    ]
-  },
-  options: {
-    title: {
-      display: false,
-      text: '',
-      responsive : true
-    }
-  }
-});
-
-new Chart(document.getElementById("diario"), {
-  type: 'bar',
-  data: {
-    labels: [{% for row in data['data'] %}
-             "{{row[28]}}",
-            {% endfor %}],
-    datasets: [{ 
-        data: [{% for row in data['data'] %}
-             "{{row[26]}}",
-            {% endfor %}],
-        label: "venta_dinero",
-        borderColor: "#3e95cd",
-        fill: false,
-        pointRadius: 2
-      }
-
-    ]
-  },
-  options: {
-    title: {
-      display: false,
-      text: '',
-      responsive : true
-    }
-  }
-});  
-
-</script>
-
-

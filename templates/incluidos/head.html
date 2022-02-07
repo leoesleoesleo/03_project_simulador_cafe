@@ -57,5 +57,18 @@
       $("#loading").hide('slow', function(){
         });
     } 
+
+    function alert_verde() {
+    $.notify("Access granted", "success");
+    }
+    function alert_amarilla() {   
+      $.notify("Warning: Self-destruct in 3.. 2..", "warn");
+    }
+    function alert_roja() {
+      $.notify("BOOM!", "error");
+    }
+    function alert_azul() {
+      $.notify("Do not press this button", "info");
+    }
     
 </script>    
