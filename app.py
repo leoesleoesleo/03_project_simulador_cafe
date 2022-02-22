@@ -68,9 +68,20 @@ def traer_data():
         categoria = request.form['categoria']
         region = request.form['region']
         canal = request.form['canal']
+        combinatoria = str(fuente + '-' + marca + '-' + categoria + '-' + region + '-' + canal)
 
         data = json_input(FILE_INPUT)
-        combinatoria = str(fuente + '-' + marca + '-' + categoria + '-' + region + '-' + canal)
+
+        """
+        data['data'][25] = [round(i,2) for i in data['data'][25]]
+        data['data'][26] = [round(i,2) for i in data['data'][26]]
+
+        data2 = {
+            'combinatoria':str(fuente + '-' + marca + '-' + categoria + '-' + region + '-' + canal),
+            'venta_dinero': [round(i,2) for i in data['data'][25]],
+            'venta_kg': [round(i,2) for i in data['data'][26]]
+        }
+        """        
         #data['canColum'] = range(len(data['col_names']))
     return render_template('v_pronostico.html',data=data,combinatoria=combinatoria) 
 

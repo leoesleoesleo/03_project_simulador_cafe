@@ -212,10 +212,14 @@ function descargarArchivo() {
         <div class="inner">
           <h4>Pronostico</h4>
           <br/>
+          <div class="info-box-content">
+            <span class="info-box-text">Indicador de confianza</span>
+            <span class="info-box-number">41,410</span>
+            <div class="progress">
+              <div class="progress-bar" style="width: 70%"></div>
+            </div>
+          </div>
           <br/>
-          <br/>
-          <br/>
-          <!--<a href="#" class="btn btn-default btn-block" onclick="rollback()">Rollback</a>-->
           <button type="button" class="btn btn-default btn-block" onclick="pronostico()">Pronosticar</button>
         </div>
         <div class="icon">
@@ -399,8 +403,8 @@ function descargarArchivo() {
                                           <td>{{row[28]}}</td>
                                           <td>{{row[29]}}</td>
                                           <td>{{row[27]}}</td>
-                                          <td>{{row[26]}}</td> 
-                                          <td>{{row[25]}}</td>                            
+                                          <td>{{row[26]}} $</td> 
+                                          <td>{{row[25]}} kg</td>                            
                                         </tr>
                                       {% endfor %}
                                       {% else %}
@@ -457,13 +461,15 @@ function descargarArchivo() {
                                               <!-- AREA CHART -->
                                               <div class="card card-danger">
                                                 <div class="card-header">
-                                                  <h3 class="card-title">Estimación Participación (Tiempo, Dinero, Kilos)</h3>
-
+                                                  <h3 class="card-title">
+                                                    Estimación Participación (Tiempo, Kilos)
+                                                  </h3>
                                                   <div class="card-tools">
                                                     <button type="button" class="btn btn-tool"></button>
                                                     <button type="button" class="btn btn-tool"></button>
                                                   </div>
                                                 </div>
+                                                <center><p style="color: rgb(139, 34, 34);font-weight: bold;">{{ combinatoria }}</p></center>
                                                 <div class="card-body">
                                                   <div class="chart">
                                                     <canvas id="estimacion" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
@@ -477,13 +483,15 @@ function descargarArchivo() {
 
                                               <div class="card card-primary">
                                                 <div class="card-header">
-                                                  <h3 class="card-title">Estimación Participación (Dinero - kilos)</h3>
-
+                                                  <h3 class="card-title">
+                                                    Estimación Participación (Tiempo - Dinero)
+                                                  </h3>                                                  
                                                   <div class="card-tools">
                                                     <button type="button" class="btn btn-tool"></button>
                                                     <button type="button" class="btn btn-tool"></button>
                                                   </div>
                                                 </div>
+                                                <center><p style="color: rgb(34, 59, 139);font-weight: bold;">{{ combinatoria }}</p></center>
                                                 <div class="card-body">
                                                   <canvas id="diario" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
                                                 </div>
@@ -536,24 +544,24 @@ function descargarArchivo() {
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Marca</label>
-                    <select id="select_marca" class="form-control">                
-                    </select>
-                    <label>Categoria</label>
-                    <select id="select_categoria" class="form-control">     
-                    </select>
                     <label>Region</label>
                     <select id="select_region" class="form-control">  
                     </select>
                     <label>Canal</label>
                     <select id="select_canal" class="form-control">    
                     </select>
+                    <label>Categoria</label>
+                    <select id="select_categoria" class="form-control">     
+                    </select>
+                    <label>Marca</label>
+                    <select id="select_marca" class="form-control">                
+                    </select>
                   </div>                  
                 </div>
                 <!-- /.box-body -->
       
                 <div class="box-footer">
-                  <a href="#" class="btn btn-primary" onclick="traer_data()">Tarer datos</a>
+                  <a href="#" class="btn btn-primary" onclick="traer_data()">Traer datos</a>
                 </div>
               </form>
             </div>
@@ -631,15 +639,7 @@ function descargarArchivo() {
     labels: [{% for row in data['data'] %}
              "{{row[28]}}",
             {% endfor %}],
-    datasets: [{ 
-        data: [{% for row in data['data'] %}
-             "{{row[26]}}",
-            {% endfor %}],
-        label: "venta_dinero",
-        borderColor: "#3e95cd",
-        fill: false,
-        pointRadius: 2
-      },
+    datasets: [
       { 
         data: [{% for row in data['data'] %}
              "{{row[25]}}",
@@ -662,12 +662,13 @@ function descargarArchivo() {
 });
 
 new Chart(document.getElementById("diario"), {
-  type: 'bar',
+  type: 'line',
   data: {
     labels: [{% for row in data['data'] %}
              "{{row[28]}}",
             {% endfor %}],
-    datasets: [{ 
+    datasets: [
+      { 
         data: [{% for row in data['data'] %}
              "{{row[26]}}",
             {% endfor %}],
@@ -686,7 +687,7 @@ new Chart(document.getElementById("diario"), {
       responsive : true
     }
   }
-});  
+}); 
 
 </script>
 

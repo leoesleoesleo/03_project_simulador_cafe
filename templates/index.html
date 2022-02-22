@@ -222,7 +222,7 @@
 
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
-        <strong><h5 style="color:#195533;font-weight:bold !important;">bienvenido<span id="session"></span></h5></strong>
+        <strong><h5 style="color:#195533;font-weight:bold !important;">Bienvenido<span id="session"></span></h5></strong>
       </li>
     </ul>
   </nav>
@@ -231,7 +231,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#7FAE4D !important;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <center><span class="brand-text font-weight-light" style="color:#195533 !important;font-weight:bold !important;">SIMULADOR</span></center>
+      <img src="static/dist/img/logoSimulador.png" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light" style="color:#195533 !important;font-weight:bold !important;">imulador</span>
     </a>
 
     <!-- Sidebar -->
@@ -251,6 +252,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="#" class="nav-link" onclick="v_informativo()" style="color:#195533 !important;">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Informativo
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#" class="nav-link" onclick="v_pronostico()" style="color:#195533 !important;">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -266,16 +275,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link" onclick="v_informativo()" style="color:#195533 !important;">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Informativo
-              </p>
-            </a>
-          </li>
-
-
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -303,7 +303,11 @@
     </div>
     <!-- /.content-header -->
 
-    <center><h1 style="font-weight: bold;">Simulador <span style="color: green;font-weight: bold;">Café<span></h1></center>
+    <center>
+      <h1 style="font-weight: bold;">Pronóstico y simulador
+         <span style="color: green;font-weight: bold;">variables de mercado<span>
+      </h1>
+    </center>
       <br/>
       <br/>
     <center><img id="loading" src="static/dist/img/nutresa.png" width="500" height="200"></center>
