@@ -72,6 +72,15 @@ def traer_data():
 
         data = json_input(FILE_INPUT)
 
+        combinatoria = {
+            'combinatoria': combinatoria,
+            'fuente': fuente,
+            'marca': marca,
+            'categoria': categoria,
+            'region': region,
+            'canal': canal
+        }
+
         """
         data['data'][25] = [round(i,2) for i in data['data'][25]]
         data['data'][26] = [round(i,2) for i in data['data'][26]]
@@ -81,7 +90,7 @@ def traer_data():
             'venta_dinero': [round(i,2) for i in data['data'][25]],
             'venta_kg': [round(i,2) for i in data['data'][26]]
         }
-        """        
+        """
         #data['canColum'] = range(len(data['col_names']))
     return render_template('v_pronostico.html',data=data,combinatoria=combinatoria) 
 
