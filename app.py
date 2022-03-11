@@ -129,8 +129,8 @@ def conversor_json_dataframe_():
 def v_descargar():
     data = json_input(FILE_INPUT)     
     path = app.config['UPLOAD_FOLDER']+FILE_GENERATED+'.csv'
-    df = pd.DataFrame(data=data['data']) 
-    v_columns = data['col_names']
+    df = pd.DataFrame(data=data['data_acc']) 
+    v_columns = data['col_names_acc']
     #pdb.set_trace()
     df.to_csv(path, sep=';', header=v_columns, index=False)
     return send_file(path, as_attachment=True)
