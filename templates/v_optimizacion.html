@@ -137,6 +137,45 @@
                 <option>Meta En Dinero</option>           
               </select>
             </div>
+
+            <form role="form">
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Fuente<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['fuente'] }}</small></label>
+                  <select id="select_fuente" class="form-control">
+                    <option>-- Seleccione --</option>
+                    <option>Nielsen</option>
+                    <option>Interna</option>           
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Region<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['region'] }}</small></label>
+                  <select id="select_region" class="form-control">  
+                  </select>
+                </div>  
+                <div class="form-group">
+                  <label>Canal<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['canal'] }}</small></label>
+                  <select id="select_canal" class="form-control">    
+                  </select>
+                </div>  
+                <div class="form-group">
+                  <label>Categoria<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['categoria'] }}</small></label>
+                  <select id="select_categoria" class="form-control">     
+                  </select>
+                </div>  
+                <div class="form-group">
+                  <label>Marca<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['marca'] }}</small></label>
+                  <select id="select_marca" class="form-control">                
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Monto<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['marca'] }}</small></label>
+                  <input id="monto" class="form-control" type="text">
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </form>
+
           </div>        
           <div class="box-footer">
             <a href="#" class="btn btn-primary" onclick="accionables()">Accionables</a>
@@ -151,6 +190,9 @@
 <script>
   $(document).ready(function() {
       $('#dataTables').DataTable({
+        "language": {
+          "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        },
       responsive: true
       });
   });
@@ -159,6 +201,9 @@
 <script>
   $(document).ready(function() {
       $('#dataTables2').DataTable({
+        "language": {
+          "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        },
       responsive: true
       });
   });
@@ -167,6 +212,9 @@
 <script>
   $(document).ready(function() {
       $('#dataTables3').DataTable({
+        "language": {
+          "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        },
       responsive: true
       });
   });
