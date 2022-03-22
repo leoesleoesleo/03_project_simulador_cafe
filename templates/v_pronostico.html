@@ -1,3 +1,4 @@
+
 <style type="text/css">
 
   #scroll_horizontal {
@@ -8,14 +9,98 @@
 
 </style>
 
+
 <script>
 
-$(document).ready(function() {
-      select_marca();
-      select_categoria();
-      select_region();
-      select_canal();          
-  });  
+
+function _select_region(){
+    $.ajax({
+          url: '/v_listar_regiones',
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#select_region').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+  function _select_canal(){     
+    var region = $('select#select_region').val();
+    $.ajax({
+          url: '/v_listar_canales',
+          data: {'region':region},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#select_canal').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+  function _select_categoria(){     
+    var region = $('select#select_region').val();
+    var canal = $('select#select_canal').val();
+    $.ajax({
+          url: '/v_listar_categorias',
+          data: {'region':region,'canal':canal},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#select_categoria').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+  function _select_marca(){     
+    var region = $('select#select_region').val();
+    var canal = $('select#select_canal').val();
+    var categoria = $('select#select_categoria').val();
+    $.ajax({
+          url: '/v_listar_marcas',
+          data: {'region':region,'canal':canal,'categoria':categoria},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#select_marca').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
 
 function descargarArchivo() {  
     //proceso de transformar JSON en DF
@@ -627,20 +712,24 @@ function descargarArchivo() {
                   </div>
                   <div class="form-group">
                     <label>Region<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['region'] }}</small></label>
-                    <select id="select_region" class="form-control">  
+                    <a style="float: right;" id="cargar_region" href="#" onclick="_select_region()">Cargar Region</a>
+                    <select id="select_region" class="form-control" name="select">  
                     </select>
                   </div>  
                   <div class="form-group">
                     <label>Canal<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['canal'] }}</small></label>
-                    <select id="select_canal" class="form-control">    
+                    <a style="float: right;" id="cargar_canal" href="#" onclick="_select_canal()">Cargar Canal</a>
+                    <select id="select_canal" class="form-control" name="select">    
                     </select>
                   </div>  
                   <div class="form-group">
+                    <a style="float: right;" id="cargar_categoria" href="#" onclick="_select_categoria()">Cargar Categoria</a>
                     <label>Categoria<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['categoria'] }}</small></label>
                     <select id="select_categoria" class="form-control">     
                     </select>
                   </div>  
                   <div class="form-group">
+                    <a style="float: right;" id="cargar_marca" href="#" onclick="_select_marca()">Cargar Marca</a>
                     <label>Marca<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['marca'] }}</small></label>
                     <select id="select_marca" class="form-control">                
                     </select>

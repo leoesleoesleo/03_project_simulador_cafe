@@ -1,45 +1,56 @@
 {
-	"marca": ["SELLO ROJO",
-		"QUINDIO",
-		"OTROS",
-		"OMA",
-		"NEW COLONY",
-		"NESCAFE",
-		"MORASURCO",
-		"MATIZ",
-		"MARCAS PRIVADAS",
-		"LUKAFE",
-		"LA BASTILLA",
-		"JUAN VALDEZ",
-		"DOLCE GUSTO",
-		"DOLCA",
-		"CORDOBA",
-		"COLCAFE",
-		"BUENDIA",
-		"BUEN DIA",
-		"ALMENDRA TROPICAL",
-		"AGUILA ROJA"
-	],
-	"categoria": ["CAFE MOLIDO#REGULAR",
-		"CAFE MOLIDO#CAPSULA/PODS",
-		"CAFE SOLUBLE#CAFE",
-		"CAFE SOLUBLE#MEZCLAS"
-	],
-	"region": ["ANTIOQUIA + CHOCO",
-		"ATLANTICO",
-		"CENTRO",
-		"COLOMBIA",
-		"CUNDINAMARCA + BOYACA",
-		"EJE CAFETERO",
-		"LLANOS",
-		"PACIFICO",
-		"SANTANDERES"
-	],
-	"canal": ["SUPERMERCADOS INDEPENDIENTES",
-		"TRADICIONALES",
-		"INDEPENDIENTES",
-		"SUPERMERCADOS CADENA",
-		"TODOS",
-		"CADENAS"
+	"region": [{
+			"name": "ANTIOQUIA + CHOCO",
+			"canal": [{
+				"name": "CADENAS",
+				"categoria": [{
+						"name": "CAFE MOLIDO#CAPSULAS/PODS",
+						"marca": [{
+							"name": ["COLCAFE", "DULCE GUSTO", "JUAN VALDEZ", "MATIZ", "QUINDIO", "SELLO ROJO"]
+						}]
+					},
+					{
+						"name": "CAFE MOLIDO#REGULAR",
+						"marca": [{
+							"name": ["AGUILA ROJA", "CORDOBA", "JUAN VALDEZ", "LA BASTILLA", "LUKAFE", "MARCAS PRIVADAS", "MATIZ", "NEW COLONY", "OMA", "OTROS", "QUINDIO", "SELLO ROJO"]
+						}]
+					}
+				]
+			}]
+		},
+		{
+			"name": "ATLANTICO",
+			"canal": [{
+				"name": "ATLANTICO_CADENAS1",
+				"categoria": [{
+						"name": "ATLANTICO_CAFE MOLIDO#CAPSULAS",
+						"marca": [{
+							"name": ["ATLANTICO_COLCAFE", "ATLANTICO_DULCE GUSTO", "ATLANTICO_JUAN VALDEZ", "ATLANTICO_MATIZ", "ATLANTICO_QUINDIO", "ATLANTICO_SELLO ROJO"]
+						}]
+					},
+					{
+						"name": "ATLANTICO_CAFE MOLIDO#REGULAR",
+						"marca": [{
+							"name": ["ATLANTICO_AGUILA ROJA", "ATLANTICO_CORDOBA", "ATLANTICO_JUAN VALDEZ", "ATLANTICO_LA BASTILLA"]
+						}]
+					}
+				]
+			}, {
+				"name": "ATLANTICO_CADENAS2",
+				"categoria": [{
+						"name": "ATLANTICO_CAFE MOLIDO#CAPSULAS2",
+						"marca": [{
+							"name": ["ATLANTICO_COLCAFE2", "ATLANTICO_DULCE GUSTO2", "ATLANTICO_JUAN VALDEZ2", "ATLANTICO_MATIZ2", "ATLANTICO_QUINDIO2", "ATLANTICO_SELLO ROJO2"]
+						}]
+					},
+					{
+						"name": "ATLANTICO_CAFE MOLIDO#REGULAR2",
+						"marca": [{
+							"name": ["ATLANTICO_AGUILA ROJA2", "ATLANTICO_CORDOBA2", "ATLANTICO_JUAN VALDEZ2", "ATLANTICO_LA BASTILLA2"]
+						}]
+					}
+				]
+			}]
+		}
 	]
 }

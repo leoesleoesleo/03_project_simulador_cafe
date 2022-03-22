@@ -108,16 +108,72 @@ def json_input(file):
         data = json.load(file)
     return data 
 
-@app.route("/v_desagregacion", methods=['POST'])
-def v_desagregacion():
+@app.route("/v_listar_regiones", methods=['POST'])
+def v_listar_regiones():
     if request.method == 'POST':
-        tipo = request.form['desagregacion']
-        data_desagregacion = json_input(FILE_DESAGREGACION)[tipo]
+        data_desagregacion = json_input(FILE_DESAGREGACION)
+        v_region = []
+        for region in data_desagregacion['region']:
+            v_region.append(region['name'])
         data = {
-            'data_desagregacion' : data_desagregacion
+            'data_desagregacion' : v_region
         }
-    return render_template('select.html',data=data)
-    
+    return render_template('select_region.html',data=data)
+
+@app.route("/v_listar_canales", methods=['POST'])
+def v_listar_canales():
+    if request.method == 'POST':
+        data_desagregacion = json_input(FILE_DESAGREGACION)
+        param_region = request.form['region']
+        v_canal = []
+        for region in data_desagregacion['region']:
+            if region['name'] == param_region:
+                for canal in region['canal']:
+                    v_canal.append(canal['name'])
+        data = {
+            'data_desagregacion' : v_canal
+        }
+    return render_template('select_canal.html',data=data)
+
+@app.route("/v_listar_categorias", methods=['POST'])
+def v_listar_categorias():
+    if request.method == 'POST':
+        data_desagregacion = json_input(FILE_DESAGREGACION)
+        param_region = request.form['region']
+        param_canal = request.form['canal']
+        v_categoria = []
+        for region in data_desagregacion['region']:
+            if region['name'] == param_region:
+                for canal in region['canal']:
+                    if canal['name'] == param_canal:
+                        for categoria in canal['categoria']:
+                            v_categoria.append(categoria['name'])
+        data = {
+            'data_desagregacion' : v_categoria
+        }
+    return render_template('select_categoria.html',data=data)
+
+@app.route("/v_listar_marcas", methods=['POST'])
+def v_listar_marcas():
+    if request.method == 'POST':
+        data_desagregacion = json_input(FILE_DESAGREGACION)
+        param_region = request.form['region']
+        param_canal = request.form['canal']
+        param_categoria = request.form['categoria']
+        v_marca = []
+        for region in data_desagregacion['region']:
+            if region['name'] == param_region:
+                for canal in region['canal']:
+                    if canal['name'] == param_canal:
+                        for categoria in canal['categoria']:
+                            if categoria['name'] == param_categoria:
+                                for marca in categoria['marca']:
+                                    v_marca.append(marca['name'])
+        data = {
+            'data_desagregacion' : v_marca[0]
+        }
+    return render_template('select_marca.html',data=data)
+
 @app.route("/conversor_json_dataframe_", methods=['POST'])
 def conversor_json_dataframe_():
     data = json_input(FILE_INPUT)    
