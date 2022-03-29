@@ -5,3 +5,4 @@ flask_mysqldb
 sqlalchemy==1.2.7
 mysql.connector
 pandas
+requests

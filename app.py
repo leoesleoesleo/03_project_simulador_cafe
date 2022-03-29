@@ -118,7 +118,7 @@ def v_listar_regiones():
         data = {
             'data_desagregacion' : v_region
         }
-    return render_template('select_region.html',data=data)
+    return render_template('select.html',data=data)
 
 @app.route("/v_listar_canales", methods=['POST'])
 def v_listar_canales():
@@ -133,7 +133,7 @@ def v_listar_canales():
         data = {
             'data_desagregacion' : v_canal
         }
-    return render_template('select_canal.html',data=data)
+    return render_template('select.html',data=data)
 
 @app.route("/v_listar_categorias", methods=['POST'])
 def v_listar_categorias():
@@ -151,7 +151,7 @@ def v_listar_categorias():
         data = {
             'data_desagregacion' : v_categoria
         }
-    return render_template('select_categoria.html',data=data)
+    return render_template('select.html',data=data)
 
 @app.route("/v_listar_marcas", methods=['POST'])
 def v_listar_marcas():
@@ -172,7 +172,7 @@ def v_listar_marcas():
         data = {
             'data_desagregacion' : v_marca[0]
         }
-    return render_template('select_marca.html',data=data)
+    return render_template('select.html',data=data)
 
 @app.route("/conversor_json_dataframe_", methods=['POST'])
 def conversor_json_dataframe_():

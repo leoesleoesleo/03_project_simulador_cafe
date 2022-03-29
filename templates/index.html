@@ -77,16 +77,6 @@
       $("select#select_fuente").css({'border-color':'red'});
       return;
     }
-    if (marca == '' || marca == '-- Seleccione --' ) {
-      $.notify("Debe seleccionar una marca", "error");
-      $("select#select_marca").css({'border-color':'red'});
-      return;
-    }
-    if (categoria == '' || categoria == '-- Seleccione --' ) {
-      $.notify("Debe seleccionar una categoria", "error");
-      $("select#select_categoria").css({'border-color':'red'});
-      return;
-    }
     if (region == '' || region == '-- Seleccione --' ) {
       $.notify("Debe seleccionar una region", "error");
       $("select#select_region").css({'border-color':'red'});
@@ -95,6 +85,16 @@
     if (canal == '' || canal == '-- Seleccione --' ) {
       $.notify("Debe seleccionar un canal", "error");
       $("select#select_canal").css({'border-color':'red'});
+      return;
+    }
+    if (categoria == '' || categoria == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una categoria", "error");
+      $("select#select_categoria").css({'border-color':'red'});
+      return;
+    }
+    if (marca == '' || marca == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una marca", "error");
+      $("select#select_marca").css({'border-color':'red'});
       return;
     }
     

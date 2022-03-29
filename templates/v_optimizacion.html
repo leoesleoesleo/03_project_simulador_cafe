@@ -9,6 +9,164 @@
   
   </style>
 
+<script>
+
+function traer_data_op() {   
+    //Validar entradas    
+    var accionable = $('select#select_accionable').val(); 
+    var fuente = $('select#op_select_fuente').val(); 
+    var marca = $('select#op_select_marca').val(); 
+    var categoria = $('select#op_select_categoria').val(); 
+    var region = $('select#op_select_region').val(); 
+    var canal = $('select#op_select_canal').val(); 
+
+    $('small#small_fuente').text(fuente); 
+
+    $("select#select_accionable").removeAttr("style");
+    $("select#op_select_fuente").removeAttr("style");
+    $("select#op_select_marca").removeAttr("style");
+    $("select#op_select_categoria").removeAttr("style");
+    $("select#op_select_region").removeAttr("style");
+    $("select#op_select_canal").removeAttr("style");    
+
+    if (accionable == '' || accionable == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar un accionable", "error");
+      $("select#op_select_accionable").css({'border-color':'red'});
+      return;
+    }
+    if (fuente == '' || fuente == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una fuente", "error");
+      $("select#op_select_fuente").css({'border-color':'red'});
+      return;
+    }
+    if (region == '' || region == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una region", "error");
+      $("select#op_select_region").css({'border-color':'red'});
+      return;
+    }
+    if (canal == '' || canal == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar un canal", "error");
+      $("select#op_select_canal").css({'border-color':'red'});
+      return;
+    }
+    if (categoria == '' || categoria == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una categoria", "error");
+      $("select#op_select_categoria").css({'border-color':'red'});
+      return;
+    }
+    if (marca == '' || marca == '-- Seleccione --' ) {
+      $.notify("Debe seleccionar una marca", "error");
+      $("select#op_select_marca").css({'border-color':'red'});
+      return;
+    }
+
+      /*
+      $.ajax({
+          url: '/traer_data',
+          type: "post",
+          data: {'fuente':fuente,'marca':marca,'categoria':categoria,'region':region,'canal':canal},
+          beforeSend: show_loading(),
+          dataType: "html",
+          success: function(res){
+              $('div#contenido').html(res); 
+              hide_loading();                
+          }
+      });
+      */
+  }
+
+
+  function _select_region_op(){
+    $.ajax({
+          url: '/v_listar_regiones',
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#op_select_region').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+  function _select_canal_op(){     
+    var region = $('select#op_select_region').val();
+    $.ajax({
+          url: '/v_listar_canales',
+          data: {'region':region},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#op_select_canal').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+  function _select_categoria_op(){     
+    var region = $('select#op_select_region').val();
+    var canal = $('select#op_select_canal').val();
+    $.ajax({
+          url: '/v_listar_categorias',
+          data: {'region':region,'canal':canal},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#op_select_categoria').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+  function _select_marca_op(){     
+    var region = $('select#op_select_region').val();
+    var canal = $('select#op_select_canal').val();
+    var categoria = $('select#op_select_categoria').val();
+    $.ajax({
+          url: '/v_listar_marcas',
+          data: {'region':region,'canal':canal,'categoria':categoria},
+          type: "POST",
+          beforeSend: show_loading(),
+          dataType: 'html',
+          headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+          success: function(res){
+            $('select#op_select_marca').html(res);
+            hide_loading(); 
+          }, 
+          error: function(e) {
+          console.error(e);
+          $.notify("Error al cargar los datos","warn"); 
+      }
+    }); 
+  }
+
+</script>
+
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
@@ -131,6 +289,7 @@
         <form class="form-horizontal">
           <div class="box-body">
             <div class="form-group">
+              <label>Accionable</label>
               <select id="select_accionable" class="form-control">
                 <option>-- Seleccione --</option>
                 <option>Meta En Kilos</option>
@@ -142,7 +301,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>Fuente<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['fuente'] }}</small></label>
-                  <select id="select_fuente" class="form-control">
+                  <select id="op_select_fuente" class="form-control">
                     <option>-- Seleccione --</option>
                     <option>Nielsen</option>
                     <option>Interna</option>           
@@ -150,36 +309,41 @@
                 </div>
                 <div class="form-group">
                   <label>Region<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['region'] }}</small></label>
-                  <select id="select_region" class="form-control">  
+                  <a style="float: right;" id="cargar_region" href="#" onclick="_select_region_op()">Cargar Region</a>
+                  <select id="op_select_region" class="form-control" name="select">
+                    <option>-- Seleccione -- </option>
                   </select>
                 </div>  
                 <div class="form-group">
                   <label>Canal<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['canal'] }}</small></label>
-                  <select id="select_canal" class="form-control">    
+                  <a style="float: right;" id="cargar_canal" href="#" onclick="_select_canal_op()">Cargar Canal</a>
+                  <select id="op_select_canal" class="form-control" name="select">
+                    <option>-- Seleccione -- </option> 
                   </select>
                 </div>  
                 <div class="form-group">
+                  <a style="float: right;" id="cargar_categoria" href="#" onclick="_select_categoria_op()">Cargar Categoria</a>
                   <label>Categoria<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['categoria'] }}</small></label>
-                  <select id="select_categoria" class="form-control">     
+                  <select id="op_select_categoria" class="form-control">
+                    <option>-- Seleccione -- </option>
                   </select>
                 </div>  
                 <div class="form-group">
+                  <a style="float: right;" id="cargar_marca" href="#" onclick="_select_marca_op()">Cargar Marca</a>
                   <label>Marca<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['marca'] }}</small></label>
-                  <select id="select_marca" class="form-control">                
+                  <select id="op_select_marca" class="form-control">
+                    <option>-- Seleccione -- </option>      
                   </select>
-                </div>
-                <div class="form-group">
-                  <label>Monto<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['marca'] }}</small></label>
-                  <input id="monto" class="form-control" type="text">
-                </div>
+                </div>                  
               </div>
               <!-- /.box-body -->
+    
+              <div class="box-footer">
+                <a href="#" class="btn btn-primary" onclick="traer_data_op()">Traer datos</a> <!-- data-dismiss="modal" aria-label="Close" -->
+              </div>
             </form>
 
           </div>        
-          <div class="box-footer">
-            <a href="#" class="btn btn-primary" onclick="accionables()">Accionables</a>
-          </div>
         </form>
       </div>
     </div>
