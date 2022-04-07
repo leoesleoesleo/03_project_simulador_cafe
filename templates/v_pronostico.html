@@ -118,7 +118,7 @@ function descargarArchivo() {
             dataType: "text",
             success: function(res){
                 if(res == 'resok'){
-                  $.notify("Rollback Aplicado", "success"); 
+                  $.notify("Retroceso de datos Aplicado", "success"); 
                   hide_loading();
                   v_pronostico();
                 }
@@ -298,16 +298,16 @@ function descargarArchivo() {
           <h4>Pronostico</h4>
           <div class="info-box-content">
             <span class="info-box-text">Indicador de confianza</span>
-            <span class="info-box-number">41,410</span>
+            <span class="info-box-number">{{ metrica }}%</span>
             <div class="progress">
-              <div class="progress-bar" style="width: 70%"></div>
+              <div class="progress-bar" style="width: {{ metrica }}%"></div>
             </div>
           </div>
           <div class="info-box-content">
             <span class="info-box-text">Porcentaje de Error</span>
-            <span class="info-box-number">30%</span>
+            <span class="info-box-number">{{ error }}%</span>
             <div class="progress">
-              <div class="progress-bar" style="width: 30%"></div>
+              <div class="progress-bar" style="width: {{ error }}%"></div>
             </div>
           </div>
           <br/>
@@ -370,7 +370,7 @@ function descargarArchivo() {
                                         <tr style="font-size: 15px;">
                                           <td>{{row[0]}}</td>
                                           <td>{{row[1]}}</td> 
-                                          <td>{{row[2]}}</td>
+                                          <td>$ {{row[2]}}</td>
                                           <td>{{row[3]}}</td>
                                           <td>{{row[4]}}</td>
                                         </tr>
@@ -422,27 +422,27 @@ function descargarArchivo() {
                                           <td>{{row[6]}}</td>
                                           <td>{{row[7]}}</td>
                                           <td>{{row[8]}}</td>
-                                          <td>{{row[9]}}</td>
-                                          <td>{{row[10]}}</td>
+                                          <td>$ {{row[9]}}</td>
+                                          <td>{{row[10]}} km</td>
                                           <td>{{row[11]}}</td> 
-                                          <td>{{row[12]}}</td>
-                                          <td>{{row[13]}}</td>
-                                          <td>{{row[14]}}</td>
+                                          <td>$ {{row[12]}}</td>
+                                          <td>$ {{row[13]}}</td>
+                                          <td>{{row[14]}} km</td>
                                           <td>{{row[15]}}</td>
-                                          <td>{{row[16]}}</td>
-                                          <td>{{row[17]}}</td>
-                                          <td>{{row[18]}}</td>
+                                          <td>$ {{row[16]}}</td>
+                                          <td>$ {{row[17]}}</td>
+                                          <td>{{row[18]}} km</td>
                                           <td>{{row[19]}}</td>
-                                          <td>{{row[20]}}</td>
-                                          <td>{{row[21]}}</td> 
-                                          <td>{{row[22]}}</td>
+                                          <td>$ {{row[20]}}</td>
+                                          <td>$ {{row[21]}}</td> 
+                                          <td>{{row[22]}} km</td>
                                           <td>{{row[23]}}</td>
-                                          <td>{{row[24]}}</td>
-                                          <td>{{row[25]}}</td>
-                                          <td>{{row[26]}}</td>
+                                          <td>$ {{row[24]}}</td>
+                                          <td>$ {{row[25]}}</td>
+                                          <td>{{row[26]}} km</td>
                                           <td>{{row[27]}}</td>
-                                          <td>{{row[28]}}</td>
-                                          <td>{{row[29]}}</td>
+                                          <td>$ {{row[28]}}</td>
+                                          <td>$ {{row[29]}}</td>
                                           <td>{{row[30]}}</td>
                                           <td>{{row[31]}}</td> 
                                           <td>{{row[32]}}</td>
@@ -591,7 +591,7 @@ function descargarArchivo() {
                                               <div class="card card-danger">
                                                 <div class="card-header">
                                                   <h3 class="card-title">
-                                                    Estimación Participación (Tiempo, Kilos)
+                                                    Estimación Participación (Tiempo, Dinero)
                                                   </h3>
                                                   <div class="card-tools">
                                                     <button type="button" class="btn btn-tool"></button>
@@ -601,7 +601,7 @@ function descargarArchivo() {
                                                 <center><p style="color: rgb(139, 34, 34);font-weight: bold;">{{ combinatoria['combinatoria'] }}</p></center>
                                                 <div class="card-body">
                                                   <div class="chart">
-                                                    <canvas id="estimacion" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
+                                                    <canvas id="venta_dinero" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
                                                   </div>
                                                 </div>
                                               </div>            
@@ -611,7 +611,7 @@ function descargarArchivo() {
                                               <div class="card card-primary">
                                                 <div class="card-header">
                                                   <h3 class="card-title">
-                                                    Estimación Participación (Tiempo - Dinero)
+                                                    Estimación Participación (Tiempo - Kilos)
                                                   </h3>                                                  
                                                   <div class="card-tools">
                                                     <button type="button" class="btn btn-tool"></button>
@@ -620,7 +620,7 @@ function descargarArchivo() {
                                                 </div>
                                                 <center><p style="color: rgb(34, 59, 139);font-weight: bold;">{{ combinatoria['combinatoria'] }}</p></center>
                                                 <div class="card-body">
-                                                  <canvas id="diario" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
+                                                  <canvas id="venta_volumen" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
                                                 </div>
                                               </div>                                              
                                             </div>
@@ -629,7 +629,7 @@ function descargarArchivo() {
                                               <div class="card card-body">
                                                 <div class="card-header">
                                                   <h3 class="card-title">
-                                                    Estimación Participación (Tiempo, Kilos)
+                                                    Estimación Participación (Tiempo, Dinero)
                                                   </h3>
                                                   <div class="card-tools">
                                                     <button type="button" class="btn btn-tool"></button>
@@ -639,7 +639,7 @@ function descargarArchivo() {
                                                 <center><p style="color: rgb(34, 139, 60);font-weight: bold;">{{ combinatoria['combinatoria'] }}</p></center>
                                                 <div class="card-body">
                                                   <div class="chart">
-                                                    <canvas id="estimacion2" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
+                                                    <canvas id="notables_dinero" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
                                                   </div>
                                                 </div>
                                               </div>            
@@ -649,7 +649,7 @@ function descargarArchivo() {
                                               <div class="card card-tools">
                                                 <div class="card-header">
                                                   <h3 class="card-title">
-                                                    Estimación Participación (Tiempo - Dinero)
+                                                    Estimación Participación (Tiempo - Kilos)
                                                   </h3>                                                  
                                                   <div class="card-tools">
                                                     <button type="button" class="btn btn-tool"></button>
@@ -658,7 +658,7 @@ function descargarArchivo() {
                                                 </div>
                                                 <center><p style="color: rgb(139, 50, 34);font-weight: bold;">{{ combinatoria['combinatoria'] }}</p></center>
                                                 <div class="card-body">
-                                                  <canvas id="diario2" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
+                                                  <canvas id="notables_volumen" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
                                                 </div>
                                               </div>                                              
                                             </div>
@@ -700,6 +700,10 @@ function descargarArchivo() {
               <!-- form start -->
               <form role="form">
                 <div class="box-body">
+                  <div class="form-group">
+                    <label>Valor Meta</label>
+                    <input id="valor_meta" class="form-control">
+                  </div>
                   <div class="form-group">
                     <label>Fuente<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['fuente'] }}</small></label>
                     <select id="select_fuente" class="form-control">
@@ -821,18 +825,18 @@ function descargarArchivo() {
 
 <script>
 
-  new Chart(document.getElementById("estimacion"), {
+  new Chart(document.getElementById("venta_dinero"), {
   type: 'line',
   data: {
-    labels: [{% for row in data['data_noacc'] %}
-             "{{row[3]}}",
+    labels: [{% for row in anio_mes %}
+            "{{row}}",
             {% endfor %}],
     datasets: [
       { 
-        data: [{% for row in data['data_noacc'] %}
-             "{{row[3]}}",
+        data: [{% for row in labels_kilos %}
+             "{{row}}",
             {% endfor %}],
-        label: "venta_valor",
+        label: "venta_dinero",
         borderColor: "#FF4E4E",
         fill: false,
         pointRadius: 2
@@ -841,6 +845,15 @@ function descargarArchivo() {
     ]
   },
   options: {
+    scales: {
+      yAxes:[{
+        ticks:{
+          callback: function(value,index,values){
+            return "$" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          }
+        }
+      }]
+    },
     title: {
       display: false,
       text: '',
@@ -849,16 +862,16 @@ function descargarArchivo() {
   }
 });
 
-new Chart(document.getElementById("diario"), {
+new Chart(document.getElementById("venta_volumen"), {
   type: 'line',
   data: {
-    labels: [{% for row in data['data_noacc'] %}
-             "{{row[3]}}",
+    labels: [{% for row in anio_mes %}
+            "{{row}}",
             {% endfor %}],
     datasets: [
       { 
-        data: [{% for row in data['data_noacc'] %}
-             "{{row[3]}}",
+        data: [{% for row in labels_volumen %}
+             "{{row}}",
             {% endfor %}],
         label: "venta_volumen",
         borderColor: "#3e95cd",
@@ -869,6 +882,15 @@ new Chart(document.getElementById("diario"), {
     ]
   },
   options: {
+    scales: {
+      yAxes:[{
+        ticks:{
+          callback: function(value,index,values){
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' KG';
+          }
+        }
+      }]
+    },
     title: {
       display: false,
       text: '',
@@ -877,15 +899,15 @@ new Chart(document.getElementById("diario"), {
   }
 }); 
 
-new Chart(document.getElementById("estimacion2"), {
+new Chart(document.getElementById("notables_dinero"), {
   type: 'horizontalBar',
   data: {
-    labels: [{% for row in data['variables_notables'] %}
+    labels: [{% for row in labels_var_notables %}
              "{{row}}",
             {% endfor %}],
     datasets: [
       { 
-        data: [{% for row in data['variables_notables_value'] %}
+        data: [{% for row in value_var_notables %}
              "{{row}}",
             {% endfor %}],
         label: "Variables Notables",
@@ -920,15 +942,15 @@ new Chart(document.getElementById("estimacion2"), {
 });
 
 
-new Chart(document.getElementById("diario2"), {
+new Chart(document.getElementById("notables_volumen"), {
   type: 'horizontalBar',
   data: {
-    labels: [{% for row in data['variables_notables'] %}
+    labels: [{% for row in labels_var_notables %}
              "{{row}}",
             {% endfor %}],
     datasets: [
       { 
-        data: [{% for row in data['variables_notables_value'] %}
+        data: [{% for row in value_var_notables %}
              "{{row}}",
             {% endfor %}],
         label: "Variables Notables",

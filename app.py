@@ -72,6 +72,18 @@ def traer_data():
 
         data = json_input(FILE_INPUT)
 
+        labels_kilos = [i[3] for i in data['data_pron']]
+        anio_mes = [str(str(i[0]) +'-'+ str(i[1])) for i in data['data_pron']]
+        labels_volumen = [i[5] for i in data['data_pron']]
+
+        a = data['variables_notables']
+        b = data['variables_notables_value']
+        labels_var_notables = [i for _,i in sorted(zip(b,a), reverse=True)]
+        value_var_notables = sorted(data['variables_notables_value'], reverse=True)
+        
+        metrica = round(data["metrica"]*100)
+        error = round(data["porcentaje_error"]*100)
+
         combinatoria = {
             'combinatoria': combinatoria,
             'fuente': fuente,
@@ -80,19 +92,7 @@ def traer_data():
             'region': region,
             'canal': canal
         }
-
-        """
-        data['data'][25] = [round(i,2) for i in data['data'][25]]
-        data['data'][26] = [round(i,2) for i in data['data'][26]]
-
-        data2 = {
-            'combinatoria':str(fuente + '-' + marca + '-' + categoria + '-' + region + '-' + canal),
-            'venta_dinero': [round(i,2) for i in data['data'][25]],
-            'venta_kg': [round(i,2) for i in data['data'][26]]
-        }
-        """
-        #data['canColum'] = range(len(data['col_names']))
-    return render_template('v_pronostico.html',data=data,combinatoria=combinatoria) 
+    return render_template('v_pronostico.html',data=data,combinatoria=combinatoria,labels_kilos=labels_kilos,anio_mes=anio_mes,labels_volumen=labels_volumen,labels_var_notables=labels_var_notables,value_var_notables=value_var_notables,metrica=metrica,error=error) 
 
 def request_aws():
     """
@@ -209,14 +209,27 @@ def upload():
             f.save(os.path.join(app.config['UPLOAD_FOLDER'], nombreFichero))
             print("archivo guardado: ",nombreFichero)
             try:
-                # VALIDAR ESTRUCTURA
+                # CONVERTIR A DATAFRAME
                 df = pd.read_csv(app.config['UPLOAD_FOLDER']+nombreFichero,delimiter=";", encoding = "ISO-8859-1", low_memory=False) #encoding = "cp1252"            
             except Exception as e:
                 print("Error al leer el CSV")
                 log.error("Error al leer el CSV" + str(e))
                 response = "ErrorCsv"
             data = json_input(FILE_INPUT)   
-            v_columns = data['col_names']
+            data_merge = {
+                "data_noacc": data["data_noacc"],
+                "col_names_noacc": data["col_names_noacc"],
+                "data_pron": data["data_pron"],
+                "col_names_pron": data["col_names_pron"],
+                "posible": data["posible"],
+                "variables_notables": data["variables_notables"],
+                "variables_notables_value": data["variables_notables_value"],
+                "metrica": data["metrica"],
+                "porcentaje_error": data["porcentaje_error"],
+                "variables_accionables": data["variables_accionables"]
+            }
+            # VALIDAR ESTRUCTURA
+            v_columns = data['col_names_acc']
             print("Columnas fichero: ",v_columns)
             print("Columnas bd: ",df.columns.values.tolist())
             if(set(df.columns.values.tolist()) == set(v_columns)): #comparar columnas de la tabla bd vs arhivo a subir
@@ -237,7 +250,7 @@ def upload():
                     remove(app.config['JSON_FOLDER']+JSON_DATA_IN+'.json')                      
                     # CREAR JSON ACTUALIZADO
                     des = app.config['JSON_FOLDER']+JSON_DATA_IN+'.json'
-                    df.to_json(des, orient = 'split')                    
+                    df.to_json(des, orient = 'split')     
                     # ELIMINAR CSV GENERADO
                     remove(app.config['UPLOAD_FOLDER']+nombreFichero)
                     response = "procesoOk"
