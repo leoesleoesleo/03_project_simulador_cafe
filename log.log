@@ -1,47 +1,16 @@
-2022-04-07 08:17:18 werkzeug     WARNING   * Debugger is active!
-2022-04-07 08:17:18 werkzeug     INFO      * Debugger PIN: 232-128-852
-2022-04-07 08:17:18 werkzeug     INFO      * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
-2022-04-07 08:17:18 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:18] "[37mGET / HTTP/1.1[0m" 200 -
-2022-04-07 08:17:18 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:18] "[37mGET /static/plugins/fontawesome-free/css/all.min.css HTTP/1.1[0m" 200 -
-2022-04-07 08:17:18 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:18] "[37mGET /static/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/plugins/icheck-bootstrap/icheck-bootstrap.min.css HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/plugins/overlayScrollbars/css/OverlayScrollbars.min.css HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/dist/css/adminlte.min.css HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/plugins/summernote/summernote-bs4.css HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/plugins/daterangepicker/daterangepicker.css HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/plugins/jquery/jquery.min.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/plugins/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/plugins/moment/moment.min.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[33mGET /static/plugins/inputmask/jquery.inputmask.min.js HTTP/1.1[0m" 404 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/plugins/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 200 -
-2022-04-07 08:17:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:19] "[37mGET /static/dist/img/logoSimulador.png HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/dist/img/nutresa.png HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/jquery-ui/jquery-ui.min.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/summernote/summernote-bs4.min.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/chart.js/Chart.min.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/dist/js/adminlte.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/dist/js/pages/dashboard.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/dist/js/demo.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/notify/notify.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/datatables-bs4/js/dataTables.bootstrap4.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/datatables/jquery.dataTables.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/ajaxfileupload.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/plugins/daterangepicker/daterangepicker.js HTTP/1.1[0m" 200 -
-2022-04-07 08:17:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:20] "[37mGET /static/dist/img/cargando.gif HTTP/1.1[0m" 200 -
-2022-04-07 08:17:21 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:21] "[33mGET /static/plugins/inputmask/jquery.inputmask.min.js HTTP/1.1[0m" 404 -
-2022-04-07 08:17:21 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:21] "[33mGET /static/dist/img/favicon.png HTTP/1.1[0m" 404 -
-2022-04-07 08:17:21 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:21] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
-2022-04-07 08:17:26 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:26] "[37mPOST /v_listar_regiones HTTP/1.1[0m" 200 -
-2022-04-07 08:17:28 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:28] "[37mPOST /v_listar_canales HTTP/1.1[0m" 200 -
-2022-04-07 08:17:29 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:29] "[37mPOST /v_listar_categorias HTTP/1.1[0m" 200 -
-2022-04-07 08:17:30 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:30] "[37mPOST /v_listar_marcas HTTP/1.1[0m" 200 -
-2022-04-07 08:17:35 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:35] "[37mPOST /traer_data HTTP/1.1[0m" 200 -
-2022-04-07 08:17:53 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:53] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
-2022-04-07 08:17:56 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:17:56] "[37mPOST /v_optimizacion HTTP/1.1[0m" 200 -
-2022-04-07 08:21:14 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:21:14] "[37mPOST /v_listar_regiones HTTP/1.1[0m" 200 -
-2022-04-07 08:21:19 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:21:19] "[37mPOST /v_listar_canales HTTP/1.1[0m" 200 -
-2022-04-07 08:21:20 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:21:20] "[37mPOST /v_listar_categorias HTTP/1.1[0m" 200 -
-2022-04-07 08:21:22 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 08:21:22] "[37mPOST /v_listar_marcas HTTP/1.1[0m" 200 -
-2022-04-07 14:17:45 werkzeug     INFO     127.0.0.1 - - [07/Apr/2022 14:17:45] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
+2022-04-08 17:49:16 werkzeug     WARNING   * Debugger is active!
+2022-04-08 17:49:16 werkzeug     INFO      * Debugger PIN: 232-128-852
+2022-04-08 17:49:16 werkzeug     INFO      * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2022-04-08 17:49:18 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:18] "[37mGET / HTTP/1.1[0m" 200 -
+2022-04-08 17:49:19 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:19] "[33mGET /static/plugins/inputmask/jquery.inputmask.min.js HTTP/1.1[0m" 404 -
+2022-04-08 17:49:19 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:19] "[37mGET /static/dist/css/adminlte.min.css.map HTTP/1.1[0m" 200 -
+2022-04-08 17:49:19 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:19] "[37mGET /static/plugins/bootstrap/js/bootstrap.bundle.min.js.map HTTP/1.1[0m" 200 -
+2022-04-08 17:49:20 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:20] "[33mGET /static/plugins/inputmask/jquery.inputmask.min.js HTTP/1.1[0m" 404 -
+2022-04-08 17:49:20 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:20] "[37mGET /static/dist/js/adminlte.js.map HTTP/1.1[0m" 200 -
+2022-04-08 17:49:20 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:20] "[37mGET /static/plugins/bootstrap/js/bootstrap.bundle.min.js.map HTTP/1.1[0m" 200 -
+2022-04-08 17:49:22 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:22] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
+2022-04-08 17:49:26 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:26] "[37mPOST /v_listar_regiones HTTP/1.1[0m" 200 -
+2022-04-08 17:49:28 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:28] "[37mPOST /v_listar_canales HTTP/1.1[0m" 200 -
+2022-04-08 17:49:29 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:29] "[37mPOST /v_listar_categorias HTTP/1.1[0m" 200 -
+2022-04-08 17:49:30 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:30] "[37mPOST /v_listar_marcas HTTP/1.1[0m" 200 -
+2022-04-08 17:49:33 werkzeug     INFO     127.0.0.1 - - [08/Apr/2022 17:49:33] "[37mPOST /traer_data HTTP/1.1[0m" 200 -

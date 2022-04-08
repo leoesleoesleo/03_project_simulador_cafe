@@ -297,14 +297,14 @@ function descargarArchivo() {
         <div class="inner">
           <h4>Pronostico</h4>
           <div class="info-box-content">
-            <span class="info-box-text">Indicador de confianza</span>
+            <span class="info-box-text" title="Descripción">Indicador de confianza</span>
             <span class="info-box-number">{{ metrica }}%</span>
             <div class="progress">
               <div class="progress-bar" style="width: {{ metrica }}%"></div>
             </div>
           </div>
           <div class="info-box-content">
-            <span class="info-box-text">Porcentaje de Error</span>
+            <span class="info-box-text" title="Descripción">Porcentaje de Error</span>
             <span class="info-box-number">{{ error }}%</span>
             <div class="progress">
               <div class="progress-bar" style="width: {{ error }}%"></div>
@@ -370,8 +370,8 @@ function descargarArchivo() {
                                         <tr style="font-size: 15px;">
                                           <td>{{row[0]}}</td>
                                           <td>{{row[1]}}</td> 
-                                          <td>$ {{row[2]}}</td>
-                                          <td>{{row[3]}}</td>
+                                          <td>$ {{"{:,}".format(row[2])}}</td>
+                                          <td>{{"{:,}".format(row[3])}}</td>>
                                           <td>{{row[4]}}</td>
                                         </tr>
                                       {% endfor %} 
@@ -414,77 +414,77 @@ function descargarArchivo() {
                                       {% for row in data['data_noacc'] %}
                                         <tr style="font-size: 15px;">
                                           <td>{{row[0]}}</td>
-                                          <td>{{row[1]}}</td> 
-                                          <td>{{row[2]}}</td>
-                                          <td>{{row[3]}}</td>
-                                          <td>{{row[4]}}</td>
-                                          <td>{{row[5]}}</td>
+                                          <td>{{row[1]}}</td>
+                                          <td>{{"{:,}".format(row[2])}}</td>
+                                          <td>{{"{:,}".format(row[3])}}</td>
+                                          <td>{{"{:,}".format(row[4])}}</td>
+                                          <td>{{"{:,}".format(row[5])}}</td>
                                           <td>{{row[6]}}</td>
                                           <td>{{row[7]}}</td>
                                           <td>{{row[8]}}</td>
-                                          <td>$ {{row[9]}}</td>
-                                          <td>{{row[10]}} km</td>
-                                          <td>{{row[11]}}</td> 
-                                          <td>$ {{row[12]}}</td>
-                                          <td>$ {{row[13]}}</td>
-                                          <td>{{row[14]}} km</td>
+                                          <td>$ {{row[9]|round()}}</td>
+                                          <td>{{row[10]}} kg</td>
+                                          <td>{{row[11]}}</td>
+                                          <td>$ {{row[12]|round()}}</td>
+                                          <td>$ {{row[13]|round()}}</td>
+                                          <td>{{row[14]}} kg</td>
                                           <td>{{row[15]}}</td>
-                                          <td>$ {{row[16]}}</td>
-                                          <td>$ {{row[17]}}</td>
-                                          <td>{{row[18]}} km</td>
+                                          <td>$ {{row[16]|round()}}</td>
+                                          <td>$ {{row[17]|round()}}</td>
+                                          <td>{{row[18]}} kg</td>
                                           <td>{{row[19]}}</td>
-                                          <td>$ {{row[20]}}</td>
-                                          <td>$ {{row[21]}}</td> 
-                                          <td>{{row[22]}} km</td>
+                                          <td>$ {{row[20]|round()}}</td>
+                                          <td>$ {{row[21]|round()}}</td>
+                                          <td>{{row[22]}} kg</td>
                                           <td>{{row[23]}}</td>
-                                          <td>$ {{row[24]}}</td>
-                                          <td>$ {{row[25]}}</td>
-                                          <td>{{row[26]}} km</td>
+                                          <td>$ {{row[24]|round()}}</td>
+                                          <td>$ {{row[25]|round()}}</td>
+                                          <td>{{row[26]}} kg</td>
                                           <td>{{row[27]}}</td>
-                                          <td>$ {{row[28]}}</td>
-                                          <td>$ {{row[29]}}</td>
-                                          <td>{{row[30]}}</td>
-                                          <td>{{row[31]}}</td> 
-                                          <td>{{row[32]}}</td>
-                                          <td>{{row[33]}}</td>
-                                          <td>{{row[34]}}</td>
-                                          <td>{{row[35]}}</td>
-                                          <td>{{row[36]}}</td>
-                                          <td>{{row[37]}}</td>
-                                          <td>{{row[38]}}</td>
-                                          <td>{{row[39]}}</td>
-                                          <td>{{row[40]}}</td>
-                                          <td>{{row[41]}}</td> 
-                                          <td>{{row[42]}}</td>
-                                          <td>{{row[43]}}</td>
-                                          <td>{{row[44]}}</td>
-                                          <td>{{row[45]}}</td>
-                                          <td>{{row[46]}}</td>
-                                          <td>{{row[47]}}</td>
-                                          <td>{{row[48]}}</td>
-                                          <td>{{row[49]}}</td>
-                                          <td>{{row[50]}}</td>
-                                          <td>{{row[51]}}</td> 
-                                          <td>{{row[52]}}</td>
-                                          <td>{{row[53]}}</td>
-                                          <td>{{row[54]}}</td>
-                                          <td>{{row[55]}}</td>
-                                          <td>{{row[56]}}</td>
-                                          <td>{{row[57]}}</td>
-                                          <td>{{row[58]}}</td>
-                                          <td>{{row[59]}}</td>
-                                          <td>{{row[60]}}</td>
-                                          <td>{{row[61]}}</td> 
-                                          <td>{{row[62]}}</td>
-                                          <td>{{row[63]}}</td>
-                                          <td>{{row[64]}}</td>
-                                          <td>{{row[65]}}</td>
-                                          <td>{{row[66]}}</td>
-                                          <td>{{row[67]}}</td>
-                                          <td>{{row[68]}}</td>
-                                          <td>{{row[69]}}</td>
-                                          <td>{{row[70]}}</td>
-                                          <td>{{row[71]}}</td> 
+                                          <td>$ {{row[28]|round()}}</td>
+                                          <td>$ {{row[29]|round()}}</td>
+                                          <td>{{"{:,}".format(row[30])}}</td>
+                                          <td>{{"{:,}".format(row[31])}}</td>
+                                          <td>{{"{:,}".format(row[32])}}</td>
+                                          <td>{{"{:,}".format(row[33])}}</td>
+                                          <td>{{"{:,}".format(row[34])}}</td>
+                                          <td>{{"{:,}".format(row[35])}}</td>
+                                          <td>{{"{:,}".format(row[36])}}</td>
+                                          <td>{{"{:,}".format(row[37])}}</td>
+                                          <td>{{"{:,}".format(row[38])}}</td>
+                                          <td>{{"{:,}".format(row[39])}}</td>
+                                          <td>{{"{:,}".format(row[40])}}</td>
+                                          <td>{{"{:,}".format(row[41])}}</td>
+                                          <td>{{"{:,}".format(row[42])}}</td>
+                                          <td>{{"{:,}".format(row[43])}}</td>
+                                          <td>{{"{:,}".format(row[44])}}</td>
+                                          <td>{{"{:,}".format(row[45])}}</td>
+                                          <td>{{"{:,}".format(row[46])}}</td>
+                                          <td>{{"{:,}".format(row[47])}}</td>
+                                          <td>{{"{:,}".format(row[48])}}</td>
+                                          <td>{{"{:,}".format(row[49])}}</td>
+                                          <td>{{"{:,}".format(row[50])}}</td>
+                                          <td>{{"{:,}".format(row[51])}}</td>
+                                          <td>{{"{:,}".format(row[52])}}</td>
+                                          <td>{{"{:,}".format(row[53])}}</td>
+                                          <td>{{"{:,}".format(row[54])}}</td>
+                                          <td>{{"{:,}".format(row[55])}}</td>
+                                          <td>{{"{:,}".format(row[56])}}</td>
+                                          <td>{{"{:,}".format(row[57])}}</td>
+                                          <td>{{"{:,}".format(row[58])}}</td>
+                                          <td>{{"{:,}".format(row[59])}}</td>
+                                          <td>{{"{:,}".format(row[60])}}</td>
+                                          <td>{{"{:,}".format(row[61])}}</td>
+                                          <td>{{"{:,}".format(row[62])}}</td>
+                                          <td>{{"{:,}".format(row[63])}}</td>
+                                          <td>{{"{:,}".format(row[64])}}</td>
+                                          <td>{{"{:,}".format(row[65])}}</td>
+                                          <td>{{"{:,}".format(row[66])}}</td>
+                                          <td>{{"{:,}".format(row[67])}}</td>
+                                          <td>{{"{:,}".format(row[68])}}</td>
+                                          <td>{{"{:,}".format(row[69])}}</td>
+                                          <td>{{"{:,}".format(row[70])}}</td>
+                                          <td>{{"{:,}".format(row[71])}}</td>
                                           <td>{{row[72]}}</td>
                                           <td>{{row[73]}}</td>
                                         </tr>
@@ -533,10 +533,10 @@ function descargarArchivo() {
                                           <td>{{row[0]}}</td>
                                           <td>{{row[1]}}</td>
                                           <td>{{row[2]}}</td>
-                                          <td>$ {{row[3]}}</td> 
-                                          <td>$ {{row[4]}}</td>                            
-                                          <td>{{row[5]}} kg</td>
-                                          <td>{{row[6]}} kg</td>
+                                          <td>$ {{"{:,}".format(row[3])}}</td>
+                                          <td>$ {{"{:,}".format(row[4])}} kg</td>                            
+                                          <td>{{"{:,}".format(row[5])}} kg</td>
+                                          <td>{{"{:,}".format(row[6])}} kg</td>
                                         </tr>
                                       {% endfor %}
                                       {% else %}
@@ -700,10 +700,6 @@ function descargarArchivo() {
               <!-- form start -->
               <form role="form">
                 <div class="box-body">
-                  <div class="form-group">
-                    <label>Valor Meta</label>
-                    <input id="valor_meta" class="form-control">
-                  </div>
                   <div class="form-group">
                     <label>Fuente<small style="color: rgb(110, 110, 110); float: right; float: right !important; padding-left: 10px; font-weight: bold;">{{ combinatoria['fuente'] }}</small></label>
                     <select id="select_fuente" class="form-control">
