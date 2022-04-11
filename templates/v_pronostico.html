@@ -371,7 +371,7 @@ function descargarArchivo() {
                                           <td>{{row[0]}}</td>
                                           <td>{{row[1]}}</td> 
                                           <td>$ {{"{:,}".format(row[2])}}</td>
-                                          <td>{{"{:,}".format(row[3])}}</td>>
+                                          <td>{{"{:,}".format(row[3])}}</td>
                                           <td>{{row[4]}}</td>
                                         </tr>
                                       {% endfor %} 
@@ -629,7 +629,7 @@ function descargarArchivo() {
                                               <div class="card card-body">
                                                 <div class="card-header">
                                                   <h3 class="card-title">
-                                                    Estimación Participación (Tiempo, Dinero)
+                                                    Estimación Participación (Tiempo, Dinero y Kilos)
                                                   </h3>
                                                   <div class="card-tools">
                                                     <button type="button" class="btn btn-tool"></button>
@@ -832,23 +832,48 @@ function descargarArchivo() {
         data: [{% for row in labels_kilos %}
              "{{row}}",
             {% endfor %}],
-        label: "venta_dinero",
+        label: "$ venta_dinero",
+        yAxisID: 'A',
         borderColor: "#FF4E4E",
         fill: false,
         pointRadius: 2
+      },
+      { 
+        data: [{% for row in labels_volumen %}
+             "{{row}}",
+            {% endfor %}],
+        label: "venta_volumen kg",
+        yAxisID: 'B',
+        borderColor: "#3e95cd",
+        fill: false,
+        pointRadius: 2
       }
-
-    ]
+    ]      
   },
   options: {
     scales: {
-      yAxes:[{
+      yAxes:[
+        {
         ticks:{
           callback: function(value,index,values){
             return "$" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           }
-        }
-      }]
+        },
+        id: 'A',
+        type: 'linear',
+        position: 'left'
+      },
+      {
+        ticks:{
+          callback: function(value,index,values){
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "kg";
+          }
+        },
+        id: 'B',
+        type: 'linear',
+        position: 'right'
+      }
+    ]
     },
     title: {
       display: false,
@@ -874,7 +899,6 @@ new Chart(document.getElementById("venta_volumen"), {
         fill: false,
         pointRadius: 2
       }
-
     ]
   },
   options: {
