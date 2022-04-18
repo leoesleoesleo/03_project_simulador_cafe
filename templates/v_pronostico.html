@@ -266,7 +266,7 @@ function descargarArchivo() {
                     <input class="form-control" readonly="" type="text" size="50" id="inputArchivo"> 
                 </label>
               </div>              
-                  <button type="button" class="btn btn-default btn-block" onclick="cargarArchivoSalida()">Subir Archivo</button>                                      
+                  <button style="margin-bottom:-2%;" type="button" class="btn btn-default btn-block" onclick="cargarArchivoSalida()">Subir Archivo y Pronosticar</button>                                      
             </div>
         </div>
         <div class="icon">
@@ -303,7 +303,8 @@ function descargarArchivo() {
               <div class="progress-bar" style="width: {{ metrica }}%"></div>
             </div>
           </div>
-          <div class="info-box-content">
+          <br/>
+          <div class="info-box-content" style="margin-bottom:2%;">
             <span class="info-box-text" title="Descripción">Porcentaje de Error</span>
             <span class="info-box-number">{{ error }}%</span>
             <div class="progress">
@@ -311,7 +312,7 @@ function descargarArchivo() {
             </div>
           </div>
           <br/>
-          <button type="button" class="btn btn-default btn-block" onclick="pronostico()">Pronosticar</button>
+          <!--<button type="button" class="btn btn-default btn-block" onclick="pronostico()">Pronosticar</button>-->
         </div>
         <!--
         <div class="icon">

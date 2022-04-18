@@ -78,8 +78,8 @@ def traer_data():
 
         a = data['variables_notables']
         b = data['variables_notables_value']
-        labels_var_notables = [i for _,i in sorted(zip(b,a), reverse=True)]
-        value_var_notables = sorted(data['variables_notables_value'], reverse=True)
+        labels_var_notables = [i for _,i in sorted(zip(b,a), reverse=True)][0:14]
+        value_var_notables = sorted(data['variables_notables_value'], reverse=True)[0:14]
         
         metrica = round(data["metrica"]*100)
         error = round(data["porcentaje_error"]*100)
@@ -107,6 +107,7 @@ def json_input(file):
     with open (file,'rb') as file:
         data = json.load(file)
     return data 
+
 
 @app.route("/v_listar_regiones", methods=['POST'])
 def v_listar_regiones():
@@ -215,19 +216,8 @@ def upload():
                 print("Error al leer el CSV")
                 log.error("Error al leer el CSV" + str(e))
                 response = "ErrorCsv"
+            # LEER JSON ANTERIOR    
             data = json_input(FILE_INPUT)   
-            data_merge = {
-                "data_noacc": data["data_noacc"],
-                "col_names_noacc": data["col_names_noacc"],
-                "data_pron": data["data_pron"],
-                "col_names_pron": data["col_names_pron"],
-                "posible": data["posible"],
-                "variables_notables": data["variables_notables"],
-                "variables_notables_value": data["variables_notables_value"],
-                "metrica": data["metrica"],
-                "porcentaje_error": data["porcentaje_error"],
-                "variables_accionables": data["variables_accionables"]
-            }
             # VALIDAR ESTRUCTURA
             v_columns = data['col_names_acc']
             print("Columnas fichero: ",v_columns)
@@ -240,17 +230,41 @@ def upload():
                         response = "nodata"
                     log.info("Info Proceso de reemplazar archivo")
                     print("Info Proceso de reemplazar archivo")
+                    
+                    # CREAR JSON ACTUALIZADO
+                    data_merge = {
+                        "data_acc":df.values.tolist(),
+                        "col_names_acc":df.columns.tolist(),
+                        "data_noacc": data["data_noacc"],
+                        "col_names_noacc": data["col_names_noacc"],
+                        "data_pron": data["data_pron"],
+                        "col_names_pron": data["col_names_pron"],
+                        "posible": data["posible"],
+                        "variables_notables": data["variables_notables"],
+                        "variables_notables_value": data["variables_notables_value"],
+                        "metrica": data["metrica"],
+                        "porcentaje_error": data["porcentaje_error"],
+                        "variables_accionables": data["variables_accionables"]
+                    }
+                    data_merge = json.dumps(data_merge)
+                    print(data_merge)
+
                     # ACTUALIZAR DATA AWS, CONSUMIR ENDPOINT
                     request_aws()
+
                     # GENERAR BKP
                     src = app.config['JSON_FOLDER']+JSON_DATA_IN+'.json'
                     des = app.config['JSON_FOLDER']+FILE_BKP+'.json'
                     shutil.copy(src, des)
                     # ELIMINAR JSON ANTERIOR
-                    remove(app.config['JSON_FOLDER']+JSON_DATA_IN+'.json')                      
-                    # CREAR JSON ACTUALIZADO
+                    remove(app.config['JSON_FOLDER']+JSON_DATA_IN+'.json')
+
+                    # ACTUALIZAR JSON
                     des = app.config['JSON_FOLDER']+JSON_DATA_IN+'.json'
-                    df.to_json(des, orient = 'split')     
+                    #df.to_json(des, orient = 'split')
+                    with open(des, 'w') as file:
+                        json.dump(data_merge, file)
+
                     # ELIMINAR CSV GENERADO
                     remove(app.config['UPLOAD_FOLDER']+nombreFichero)
                     response = "procesoOk"
