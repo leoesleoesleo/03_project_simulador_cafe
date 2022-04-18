@@ -258,15 +258,16 @@ function descargarArchivo() {
         <div class="inner">
           <h4>Subir</h4>
             <div class="form-group"> 
-              <div class="input-group">
+              <div class="input-group" style="margin-bottom:-12px;">
                 <label class="input-group-btn">
                     <span class="btn btn-primary">
                       Examinar… <input style="display: none;" multiple="" type="file" onchange="mostrarArchivo()" id="inputArchivoCarga" name="inputArchivoCarga">
                     </span>                                        
                     <input class="form-control" readonly="" type="text" size="50" id="inputArchivo"> 
                 </label>
-              </div>              
-                  <button style="margin-bottom:-2%;" type="button" class="btn btn-default btn-block" onclick="cargarArchivoSalida()">Subir Archivo y Pronosticar</button>                                      
+              </div>
+                  <br/>              
+                  <button style="margin-bottom:-16px;" type="button" class="btn btn-default btn-block" onclick="cargarArchivoSalida()">Subir Archivo y Pronosticar</button>                                      
             </div>
         </div>
         <div class="icon">
@@ -423,27 +424,27 @@ function descargarArchivo() {
                                           <td>{{row[6]}}</td>
                                           <td>{{row[7]}}</td>
                                           <td>{{row[8]}}</td>
-                                          <td>$ {{row[9]|round()}}</td>
+                                          <td>$ {{"{:,}".format(row[9]|round())}}</td>
                                           <td>{{row[10]}} kg</td>
                                           <td>{{row[11]}}</td>
-                                          <td>$ {{row[12]|round()}}</td>
-                                          <td>$ {{row[13]|round()}}</td>
+                                          <td>$ {{"{:,}".format(row[12]|round())}}</td>
+                                          <td>$ {{"{:,}".format(row[13]|round())}}</td>
                                           <td>{{row[14]}} kg</td>
                                           <td>{{row[15]}}</td>
-                                          <td>$ {{row[16]|round()}}</td>
-                                          <td>$ {{row[17]|round()}}</td>
+                                          <td>$ {{"{:,}".format(row[16]|round())}}</td>
+                                          <td>$ {{"{:,}".format(row[17]|round())}}</td>
                                           <td>{{row[18]}} kg</td>
                                           <td>{{row[19]}}</td>
-                                          <td>$ {{row[20]|round()}}</td>
-                                          <td>$ {{row[21]|round()}}</td>
+                                          <td>$ {{"{:,}".format(row[20]|round())}}</td>
+                                          <td>$ {{"{:,}".format(row[21]|round())}}</td>
                                           <td>{{row[22]}} kg</td>
                                           <td>{{row[23]}}</td>
-                                          <td>$ {{row[24]|round()}}</td>
-                                          <td>$ {{row[25]|round()}}</td>
+                                          <td>$ {{"{:,}".format(row[24]|round())}}</td>
+                                          <td>$ {{"{:,}".format(row[25]|round())}}</td>
                                           <td>{{row[26]}} kg</td>
                                           <td>{{row[27]}}</td>
-                                          <td>$ {{row[28]|round()}}</td>
-                                          <td>$ {{row[29]|round()}}</td>
+                                          <td>$ {{"{:,}".format(row[28]|round())}}</td>
+                                          <td>$ {{"{:,}".format(row[29]|round())}}</td>
                                           <td>{{"{:,}".format(row[30])}}</td>
                                           <td>{{"{:,}".format(row[31])}}</td>
                                           <td>{{"{:,}".format(row[32])}}</td>
