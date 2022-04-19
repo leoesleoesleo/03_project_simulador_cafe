@@ -188,7 +188,6 @@ def v_descargar():
     path = app.config['UPLOAD_FOLDER']+FILE_GENERATED+'.csv'
     df = pd.DataFrame(data=data['data_acc']) 
     v_columns = data['col_names_acc']
-    #pdb.set_trace()
     df.to_csv(path, sep=';', header=v_columns, index=False)
     return send_file(path, as_attachment=True)
 
@@ -198,31 +197,36 @@ def upload():
     response = "sinprocesar"
     if request.method == 'POST':
         archivo   = request.form['archivo']
-        #print(archivo,"*****************")
-        # obtenemos el archivo del input "archivo" LEER ARCHIVO
+        # 01 - leer y generar CSV
+        # obtenemos el archivo del input "archivo"
         f = request.files['inputArchivoCarga']
         filename = secure_filename(f.filename)
-        # VALIDAR EXTENSION CSV
+
+        # 02 - Validar Extensión
         if f and allowed_file(f.filename):
-            # GUARDAR ALEATORIO
+            # 03 - Guardar id unico
             numAleatorio = random.randrange(10, 99)
             nombreFichero = 'temp_'+str(numAleatorio)+'.csv'
             f.save(os.path.join(app.config['UPLOAD_FOLDER'], nombreFichero))
             print("archivo guardado: ",nombreFichero)
             try:
-                # CONVERTIR A DATAFRAME
+                # 04 - Convertir y generar DF
                 df = pd.read_csv(app.config['UPLOAD_FOLDER']+nombreFichero,delimiter=";", encoding = "ISO-8859-1", low_memory=False) #encoding = "cp1252"            
             except Exception as e:
                 print("Error al leer el CSV")
                 log.error("Error al leer el CSV" + str(e))
                 response = "ErrorCsv"
-            # LEER JSON ANTERIOR    
-            data = json_input(FILE_INPUT)   
-            # VALIDAR ESTRUCTURA
+            # 05 - Leer JSON anterior   
+            data = json_input(FILE_INPUT)
+            
+            # 06 - validar extructura
             v_columns = data['col_names_acc']
             print("Columnas fichero: ",v_columns)
             print("Columnas bd: ",df.columns.values.tolist())
-            if(set(df.columns.values.tolist()) == set(v_columns)): #comparar columnas de la tabla bd vs arhivo a subir
+
+            # 07 - Validar columnas y campos
+            # comparar columnas de la tabla bd vs arhivo a subir
+            if(set(df.columns.values.tolist()) == set(v_columns)): 
                 try:
                     print("@@comparar columnas OK")
                     df.iloc[:,1][0]
@@ -231,7 +235,7 @@ def upload():
                     log.info("Info Proceso de reemplazar archivo")
                     print("Info Proceso de reemplazar archivo")
                     
-                    # CREAR JSON ACTUALIZADO
+                    # 08 - Unificar JSON
                     data_merge = {
                         "data_acc":df.values.tolist(),
                         "col_names_acc":df.columns.tolist(),
@@ -246,27 +250,29 @@ def upload():
                         "porcentaje_error": data["porcentaje_error"],
                         "variables_accionables": data["variables_accionables"]
                     }
-                    data_merge = json.dumps(data_merge)
-                    print(data_merge)
 
-                    # ACTUALIZAR DATA AWS, CONSUMIR ENDPOINT
+                    # 09 - Consumir API y enviar nueva data
                     request_aws()
 
-                    # GENERAR BKP
+                    # 10- Generar BKP JSON
                     src = app.config['JSON_FOLDER']+JSON_DATA_IN+'.json'
                     des = app.config['JSON_FOLDER']+FILE_BKP+'.json'
                     shutil.copy(src, des)
-                    # ELIMINAR JSON ANTERIOR
+                    
+                    # 11 - Validar JSON respuesta
+
+                    # 12 - Eliminar JSON anterior
                     remove(app.config['JSON_FOLDER']+JSON_DATA_IN+'.json')
 
-                    # ACTUALIZAR JSON
+                    # 13 - Eliminar CSV generado
+                    remove(app.config['UPLOAD_FOLDER']+nombreFichero)
+
+                    # 14 - Reemplazar JSON 
                     des = app.config['JSON_FOLDER']+JSON_DATA_IN+'.json'
                     #df.to_json(des, orient = 'split')
                     with open(des, 'w') as file:
                         json.dump(data_merge, file)
-
-                    # ELIMINAR CSV GENERADO
-                    remove(app.config['UPLOAD_FOLDER']+nombreFichero)
+                    
                     response = "procesoOk"
                 except Exception as error:
                     log.error("Error en el proceso Upload" + str(error))    

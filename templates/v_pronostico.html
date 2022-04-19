@@ -429,19 +429,19 @@ function descargarArchivo() {
                                           <td>{{row[11]}}</td>
                                           <td>$ {{"{:,}".format(row[12]|round())}}</td>
                                           <td>$ {{"{:,}".format(row[13]|round())}}</td>
-                                          <td>{{row[14]}} kg</td>
+                                          <td>{{"{:,}".format(row[14]|round())}} kg</td>
                                           <td>{{row[15]}}</td>
                                           <td>$ {{"{:,}".format(row[16]|round())}}</td>
                                           <td>$ {{"{:,}".format(row[17]|round())}}</td>
-                                          <td>{{row[18]}} kg</td>
+                                          <td>{{"{:,}".format(row[18]|round())}} kg</td>
                                           <td>{{row[19]}}</td>
                                           <td>$ {{"{:,}".format(row[20]|round())}}</td>
                                           <td>$ {{"{:,}".format(row[21]|round())}}</td>
-                                          <td>{{row[22]}} kg</td>
+                                          <td>{{"{:,}".format(row[22]|round())}} kg</td>
                                           <td>{{row[23]}}</td>
                                           <td>$ {{"{:,}".format(row[24]|round())}}</td>
                                           <td>$ {{"{:,}".format(row[25]|round())}}</td>
-                                          <td>{{row[26]}} kg</td>
+                                          <td>{{"{:,}".format(row[26]|round())}} kg</td>
                                           <td>{{row[27]}}</td>
                                           <td>$ {{"{:,}".format(row[28]|round())}}</td>
                                           <td>$ {{"{:,}".format(row[29]|round())}}</td>
@@ -853,6 +853,22 @@ function descargarArchivo() {
     ]      
   },
   options: {
+    annotation: {
+        annotations: [
+          {
+            type: "line",
+            mode: "vertical",
+            scaleID: "x-axis-0",
+            value: "2021-10",
+            borderColor: "green",
+            label: {
+              content: "Pronóstico",
+              enabled: true,
+              position: "top"
+            }
+          }
+        ]
+      },
     scales: {
       yAxes:[
         {
