@@ -1,19 +1,21 @@
-2022-04-18 23:58:43 werkzeug     WARNING   * Debugger is active!
-2022-04-18 23:58:43 werkzeug     INFO      * Debugger PIN: 232-128-852
-2022-04-18 23:58:43 werkzeug     INFO      * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
-2022-04-18 23:59:23 root         INFO     Info Proceso Upload iniciado
-2022-04-18 23:59:23 root         INFO     Info Proceso de reemplazar archivo
-2022-04-18 23:59:23 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:23] "[37mPOST /upload HTTP/1.1[0m" 200 -
-2022-04-18 23:59:23 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:23] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
-2022-04-18 23:59:26 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:26] "[37mPOST /v_listar_regiones HTTP/1.1[0m" 200 -
-2022-04-18 23:59:27 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:27] "[37mPOST /v_listar_canales HTTP/1.1[0m" 200 -
-2022-04-18 23:59:28 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:28] "[37mPOST /v_listar_categorias HTTP/1.1[0m" 200 -
-2022-04-18 23:59:29 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:29] "[37mPOST /v_listar_marcas HTTP/1.1[0m" 200 -
-2022-04-18 23:59:29 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:29] "[37mPOST /traer_data HTTP/1.1[0m" 200 -
-2022-04-18 23:59:44 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:44] "[37mPOST /v_rollback HTTP/1.1[0m" 200 -
-2022-04-18 23:59:45 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:45] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
-2022-04-18 23:59:47 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:47] "[37mPOST /v_listar_regiones HTTP/1.1[0m" 200 -
-2022-04-18 23:59:48 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:48] "[37mPOST /v_listar_canales HTTP/1.1[0m" 200 -
-2022-04-18 23:59:49 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:49] "[37mPOST /v_listar_categorias HTTP/1.1[0m" 200 -
-2022-04-18 23:59:50 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:50] "[37mPOST /v_listar_marcas HTTP/1.1[0m" 200 -
-2022-04-18 23:59:52 werkzeug     INFO     127.0.0.1 - - [18/Apr/2022 23:59:52] "[37mPOST /traer_data HTTP/1.1[0m" 200 -
+2022-04-28 19:20:12 werkzeug     WARNING   * Debugger is active!
+2022-04-28 19:20:12 werkzeug     INFO      * Debugger PIN: 232-128-852
+2022-04-28 19:20:12 werkzeug     INFO      * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2022-04-28 19:21:32 root         INFO     Info Proceso Upload iniciado
+2022-04-28 19:21:32 root         INFO     Info Proceso de reemplazar archivo
+2022-04-28 19:21:32 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:32] "[37mPOST /upload HTTP/1.1[0m" 200 -
+2022-04-28 19:21:32 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:32] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
+2022-04-28 19:21:36 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:36] "[37mPOST /v_listar_regiones HTTP/1.1[0m" 200 -
+2022-04-28 19:21:37 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:37] "[37mPOST /v_listar_canales HTTP/1.1[0m" 200 -
+2022-04-28 19:21:38 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:38] "[37mPOST /v_listar_categorias HTTP/1.1[0m" 200 -
+2022-04-28 19:21:39 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:39] "[37mPOST /v_listar_marcas HTTP/1.1[0m" 200 -
+2022-04-28 19:21:40 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:40] "[37mPOST /traer_data HTTP/1.1[0m" 200 -
+2022-04-28 19:21:48 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:48] "[37mPOST /v_rollback HTTP/1.1[0m" 200 -
+2022-04-28 19:21:48 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:48] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
+2022-04-28 19:21:51 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:51] "[37mPOST /v_listar_regiones HTTP/1.1[0m" 200 -
+2022-04-28 19:21:52 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:52] "[37mPOST /v_listar_canales HTTP/1.1[0m" 200 -
+2022-04-28 19:21:53 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:53] "[37mPOST /v_listar_categorias HTTP/1.1[0m" 200 -
+2022-04-28 19:21:54 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:54] "[37mPOST /v_listar_marcas HTTP/1.1[0m" 200 -
+2022-04-28 19:21:54 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:54] "[37mPOST /traer_data HTTP/1.1[0m" 200 -
+2022-04-28 19:21:59 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:21:59] "[37mPOST /v_optimizacion HTTP/1.1[0m" 200 -
+2022-04-28 19:22:10 werkzeug     INFO     127.0.0.1 - - [28/Apr/2022 19:22:10] "[37mPOST /v_pronostico HTTP/1.1[0m" 200 -
