@@ -97,7 +97,7 @@ Por último train_model se entrega una desagregación y se pide que se entrene u
 ### Momentos
 
 <div align="center">
-	<img height="700" src="https://leoesleoesleo.github.io/imagenes/momentos_simulador_cafe.PNG" alt="Flujo">
+	<img height="600" src="https://leoesleoesleo.github.io/imagenes/momentos_simulador_cafe.PNG" alt="Flujo">
 </div>
 
 ### Descripción
