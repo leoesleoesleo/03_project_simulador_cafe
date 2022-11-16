@@ -28,6 +28,8 @@ Se entrega también una variable booleana "posible" en caso de no encontrar mode
 Por último train_model se entrega una desagregación y se pide que se entrene un modelo. en este caso solo se retorna error en caso de no poder entrenarlo.
 </p>
 
+
+
 ## Manual de instalación
 
 ### Pasos
@@ -65,6 +67,11 @@ Por último train_model se entrega una desagregación y se pide que se entrene u
    ```
    pytest -v  
     ``` 
+
+<div align="center">
+	<img height="700" src="https://leoesleoesleo.github.io/imagenes/pytest_simulador_cafe.PNG" alt="Flujo">
+</div>  
+
 
 - Validar cobertura de la aplicación (Opcional)
     ```
