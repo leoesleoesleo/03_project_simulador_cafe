@@ -5,7 +5,7 @@
 
 ## Flujo del proceso
 <div align="center">
-	<img height="700" src="https://leoesleoesleo.github.io/imagenes/botsi_flujo.PNG" alt="PokeAPI">
+	<img height="700" src="https://leoesleoesleo.github.io/imagenes/flujo_simulador_cafe.png" alt="Flujo">
 </div>  
 
 ## Manual de instalación
