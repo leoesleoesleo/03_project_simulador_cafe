@@ -68,8 +68,9 @@ Por último train_model se entrega una desagregación y se pide que se entrene u
    pytest -v  
     ``` 
 
+
 <div align="center">
-	<img height="450" src="https://leoesleoesleo.github.io/imagenes/pytest_simulador_cafe.PNG" alt="Flujo">
+	<img height="400" src="https://leoesleoesleo.github.io/imagenes/pytest_simulador_cafe.PNG" alt="Flujo">
 </div>  
 
 - Validar cobertura de la aplicación (Opcional)
@@ -83,10 +84,41 @@ Por último train_model se entrega una desagregación y se pide que se entrene u
 
 - Levantar servicio
     ```
-   python manage.py runserver
+   python app.py
     ```
 
 -  Iniciar programa en el navegador
     ```
    https://127.0.0.1:5000
     ```
+
+
+## Conociendo la Interfaz
+### Momentos
+
+<div align="center">
+	<img height="700" src="https://leoesleoesleo.github.io/imagenes/momentos_simulador_cafe.PNG" alt="Flujo">
+</div>
+
+### Descripción
+<p align="justify">
+1. Módulo principal de la aplicación
+</p>
+<p align="justify">
+2. Cargar las variables y elegir las combinatorias del simulador
+</p>
+<p align="justify">
+3. En caso de querer modificar los datos, este módulo permite subir un archivo CSV con el mismo formato para guardarla en el servidor y actualizar los datos.  
+</p>
+<p align="justify">
+4. Visualización de las tablas y graficas de los datos.
+</p>
+<p align="justify">
+5. Descargar en archivo CSV los datos vistos en la visualización.
+</p>
+<p align="justify">
+6. En caso de recuperar los ultimos datos, este módulo permite hacer rollback de los datos de simulación.
+</p>
+<p align="justify">
+7. Información de indicadores de confianza y error.
+</p>
