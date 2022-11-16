@@ -8,6 +8,26 @@
 	<img height="700" src="https://leoesleoesleo.github.io/imagenes/flujo_simulador_cafe.png" alt="Flujo">
 </div>  
 
+## Insumos 
+<p align="justify">
+Data_in es el json que se pide para pronosticar los siguientes 12 meses. Tiene que traer incluido los próximos 12 meses y esto se deja claro en la columna de "pronostico" de los datos. 
+</p>
+<p align="justify">
+Es decir se entregan todos los datos históricos y futuros. las columnas más importantes son "venta_kg", "venta_dinero", "pronostico", "mes", "ano". 
+Las demás columnas son datos de variables explicativas, el nombre de las columnas se da en "col_names".
+</p>
+<p align="justify">
+Además se tiene que entregar la información de la desagregación en marca, canal, categoria y región. Para especificar si se quiere usar el modelo 3.1 variables accionables  independientes ( el usuarios modifica las variables accionables y se le entrega una predicción) se coloca "variables_accionables_dependientes": false. 
+En caso contrario se tiene que llenar los datos de "venta_kg" y "venta_dinero" para el futuro y poner "variables_accionables_dependientes": true para que el modelo use la parte 3.2 (optimizar y hallar las variables accionables) .
+</p>
+<p align="justify">
+Data out retorna los datos completados (llenando el pronóstico de venta o las variables accionables ) .
+Se entrega también una variable booleana "posible" en caso de no encontrar modelo, también se entregan las 5 variables notables más importantes en orden en variables notables.
+</p>
+<p align="justify">
+Por último train_model se entrega una desagregación y se pide que se entrene un modelo. en este caso solo se retorna error en caso de no poder entrenarlo.
+</p>
+
 ## Manual de instalación
 
 ### Pasos
