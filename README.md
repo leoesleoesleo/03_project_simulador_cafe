@@ -5,7 +5,7 @@
 
 ## Flujo del proceso
 <div align="center">
-	<img height="700" src="https://leoesleoesleo.github.io/imagenes/flujo_simulador_cafe.png" alt="Flujo">
+	<img height="600" src="https://leoesleoesleo.github.io/imagenes/flujo_simulador_cafe.png" alt="Flujo">
 </div>  
 
 ## Insumos 
@@ -69,7 +69,7 @@ Por último train_model se entrega una desagregación y se pide que se entrene u
     ``` 
 
 <div align="center">
-	<img height="300" src="https://leoesleoesleo.github.io/imagenes/pytest_simulador_cafe.PNG" alt="Flujo">
+	<img height="450" src="https://leoesleoesleo.github.io/imagenes/pytest_simulador_cafe.PNG" alt="Flujo">
 </div>  
 
 - Validar cobertura de la aplicación (Opcional)
@@ -78,7 +78,7 @@ Por último train_model se entrega una desagregación y se pide que se entrene u
     ```    
 
 <div align="center">
-	<img height="300" src="https://leoesleoesleo.github.io/imagenes/coverage_simulador_cafe.PNG" alt="Flujo">
+	<img height="400" src="https://leoesleoesleo.github.io/imagenes/coverage_simulador_cafe.PNG" alt="Flujo">
 </div>  
 
 - Levantar servicio
