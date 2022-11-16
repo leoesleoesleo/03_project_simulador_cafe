@@ -14,7 +14,7 @@
 
 - Clonar repositorio
 	```
-	git clone https://github.com/leoesleoesleo/03_project_botsitech.git
+	git clone https://github.com/leoesleoesleo/03_project_simulador_cafe.git
 	```
 - Crear entorno virtual
 
