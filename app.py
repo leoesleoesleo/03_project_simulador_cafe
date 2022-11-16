@@ -168,79 +168,107 @@ def json_input(file):
     return data
 
 
+def desagregacion_regiones():
+    data_desagregacion = json_input(FILE_DESAGREGACION)
+    v_region = []
+    for region in data_desagregacion['region']:
+        v_region.append(region['name'])
+    return {
+        'data_desagregacion': v_region
+    }
+
+
 @app.route("/v_listar_regiones", methods=['POST'])
 def v_listar_regiones():
     if request.method == 'POST':
-        data_desagregacion = json_input(FILE_DESAGREGACION)
-        v_region = []
-        for region in data_desagregacion['region']:
-            v_region.append(region['name'])
-        data = {
-            'data_desagregacion': v_region
-        }
+        data = desagregacion_regiones()
     return render_template('select.html', data=data)
 
+
+
+def desagregacion_canales(param_region):
+    data_desagregacion = json_input(FILE_DESAGREGACION)
+    v_canal = []
+    for region in data_desagregacion['region']:
+        if region['name'] == param_region:
+            for canal in region['canal']:
+                v_canal.append(canal['name'])
+    return {
+        'data_desagregacion': v_canal
+    }
+   
 
 @app.route("/v_listar_canales", methods=['POST'])
 def v_listar_canales():
     if request.method == 'POST':
-        data_desagregacion = json_input(FILE_DESAGREGACION)
         param_region = request.form['region']
-        v_canal = []
-        for region in data_desagregacion['region']:
-            if region['name'] == param_region:
-                for canal in region['canal']:
-                    v_canal.append(canal['name'])
-        data = {
-            'data_desagregacion': v_canal
-        }
+        data = desagregacion_canales(param_region)
     return render_template(
         'select.html',
         data=data
     )
+
+
+def desagregacion_categorias(param_region, param_canal):
+    data_desagregacion = json_input(FILE_DESAGREGACION)
+    v_categoria = []
+    for region in data_desagregacion['region']:
+        if region['name'] == param_region:
+            for canal in region['canal']:
+                if canal['name'] == param_canal:
+                    for categoria in canal['categoria']:
+                        v_categoria.append(categoria['name'])
+    return {
+        'data_desagregacion': v_categoria
+    }
 
 
 @app.route("/v_listar_categorias", methods=['POST'])
 def v_listar_categorias():
     if request.method == 'POST':
-        data_desagregacion = json_input(FILE_DESAGREGACION)
         param_region = request.form['region']
         param_canal = request.form['canal']
-        v_categoria = []
-        for region in data_desagregacion['region']:
-            if region['name'] == param_region:
-                for canal in region['canal']:
-                    if canal['name'] == param_canal:
-                        for categoria in canal['categoria']:
-                            v_categoria.append(categoria['name'])
-        data = {
-            'data_desagregacion': v_categoria
-        }
+        data = desagregacion_categorias(
+            param_region, 
+            param_canal
+        )
     return render_template(
         'select.html',
         data=data
     )
 
 
+def desagregacion_marcas(
+    param_region,
+    param_canal,
+    param_categoria
+):
+    data_desagregacion = json_input(FILE_DESAGREGACION)
+    v_marca = []
+    for region in data_desagregacion['region']:
+        if region['name'] == param_region:
+            for canal in region['canal']:
+                if canal['name'] == param_canal:
+                    for categoria in canal['categoria']:
+                        if categoria['name'] == param_categoria:
+                            for marca in categoria['marca']:
+                                v_marca.append(marca['name'])
+    return {
+        'data_desagregacion': v_marca[0]
+    }
+
+
 @app.route("/v_listar_marcas", methods=['POST'])
 def v_listar_marcas():
     if request.method == 'POST':
-        data_desagregacion = json_input(FILE_DESAGREGACION)
         param_region = request.form['region']
         param_canal = request.form['canal']
         param_categoria = request.form['categoria']
-        v_marca = []
-        for region in data_desagregacion['region']:
-            if region['name'] == param_region:
-                for canal in region['canal']:
-                    if canal['name'] == param_canal:
-                        for categoria in canal['categoria']:
-                            if categoria['name'] == param_categoria:
-                                for marca in categoria['marca']:
-                                    v_marca.append(marca['name'])
-        data = {
-            'data_desagregacion': v_marca[0]
-        }
+        data = desagregacion_marcas(
+            param_region,
+            param_canal,
+            param_categoria
+        )
     return render_template('select.html', data=data)
 
 
