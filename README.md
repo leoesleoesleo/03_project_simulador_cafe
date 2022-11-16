@@ -72,12 +72,15 @@ Por último train_model se entrega una desagregación y se pide que se entrene u
 	<img height="700" src="https://leoesleoesleo.github.io/imagenes/pytest_simulador_cafe.PNG" alt="Flujo">
 </div>  
 
-
 - Validar cobertura de la aplicación (Opcional)
     ```
    coverage run -m pytest -v -p no:cacheprovider --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html  
     ```    
-    
+
+<div align="center">
+	<img height="700" src="https://leoesleoesleo.github.io/imagenes/coverage_simulador_cafe.PNG" alt="Flujo">
+</div>  
+
 - Levantar servicio
     ```
    python manage.py runserver
