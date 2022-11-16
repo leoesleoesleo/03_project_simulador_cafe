@@ -30,7 +30,7 @@
 	pip install virtualenv
 	```
 	```
-	python3 -m venv env_simulador
+	python -m venv env_simulador
 	```
 	```
 	\Scripts\activate
